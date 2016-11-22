@@ -14,6 +14,28 @@ handleYoutubeFetch () {
 
 // create a React Component called _App_
 class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      // states
+      artistname : '',
+    };
+  } 
+
+  // get a list of albums by specific artist
+  function getAlbums() {
+    // assuming that artist name is updated to state by input handler
+    const itunesURL = 'https://itunes.apple.com/search?entity=album&term=${this.state.artistname}';
+
+    fetch(itunesURL)
+    .then(r => r.json())
+    .then( data => {
+      // console.log('getAlbums fetch', data);
+      /* call render function */ 
+    })
+    .catch(err => console.log('getAlbums error', err));
+  }
 
   render(){
     return (
