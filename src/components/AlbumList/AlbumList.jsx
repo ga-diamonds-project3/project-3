@@ -11,7 +11,7 @@ export default class AlbumList extends Component {
   // uses albumList props to send album and key to AlbumListItem component
   renderAlbums() {
     // use map on this.props.albumList to render
-    return this.props.albumList.map((album, index) => {
+    return this.props.albumList.map((album, index) => 
       <AlbumListItem 
         key={index}
         artistName={album.artistName}
@@ -19,13 +19,13 @@ export default class AlbumList extends Component {
         artworkUrl100={album.artworkUrl100}
         trackCount={album.trackCount}
       />
-    })
+    )
   }
 
   render() {
     return(
       // itunes album list contnainer
-      <div id={style["album-list-container"]}>
+      <div id="album-list-container">
         {this.renderAlbums()}
       </div>
     )

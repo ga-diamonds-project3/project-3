@@ -39,7 +39,15 @@ class App extends Component {
       type: 'GET',
       dataType: 'jsonp',
       success: data => {
-        console.log(data);
+        console.log('before filtered ', data.results.length);
+        const filterAlbums = data.results.filter( el => {
+          return el.trackCount !== 1;
+        })
+        console.log('after filtered', filterAlbums.length);
+        this.setState({
+          albumList: filterAlbums,
+        });
+        console.log(this.state.albumList)
       }
     });
   }
