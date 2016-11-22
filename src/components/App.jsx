@@ -50,7 +50,7 @@ class App extends Component {
   }
   // udpate searchArtist state on every change at input search
   handleInputChange(e) {
-    // console.log('input value:', e.target.value);
+    // console.log('input value:', e);
     this.setState({
       searchArtist: e.target.value,
     });
