@@ -4,7 +4,9 @@ const db = require('../db/db');
 function getPlaylist(req, res, next) {
   console.log('getting playlist ** server');
   db.any(`SELECT * 
-          FROM playlist;`)
+          FROM playlist
+          WHERE user_id = $1;`, 
+          [/* req.params */])
   .then(results => {
     res.results = results;
     next();
