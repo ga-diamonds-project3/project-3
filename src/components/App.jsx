@@ -20,7 +20,7 @@ class App extends Component {
   }
 
   // get a list of albums by specific artist
-  function getAlbums() {
+  getAlbums() {
     // assuming that artist name is updated to state by input handler
     const itunesURL = 'https://itunes.apple.com/search?entity=album&term=${this.state.artistname}';
 
@@ -33,14 +33,14 @@ class App extends Component {
     .catch(err => console.log('getAlbums error', err));
   }
 
-  handleYoutubeFetch () {
-    fetch(`http://localhost:3000/api/youtube`)
-    .then(r => r.json())
-    .then((video) => {
-      // Data pulled from Api, will be determined at a later time.
-    })
-    .catch(error) => console.log('You\'re looking at an Error: ', error)
-  }
+  // handleYoutubeFetch () {
+  //   fetch(`http://localhost:3000/api/youtube`)
+  //   .then(r => r.json())
+  //   .then((video) => {
+  //     // Data pulled from Api, will be determined at a later time.
+  //   })
+  //   .catch(error) => console.log('You\'re looking at an Error: ', error)
+  // }
 
   // function that will hit our database API and set an array of data to the playlist state
   getPlayList() {
