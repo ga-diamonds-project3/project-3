@@ -21,7 +21,12 @@ class App extends Component {
     };
   }
   // get a list of albums by specific artist
-  getAlbums() {
+  getAlbums(e) {
+    // prevent form from redirecting to new page
+    e.preventDefault();
+    // clear input when user searches an artist
+    e.target.reset();
+
     // assuming that artist name is updated to state by input handler
     const itunesURL = `https://itunes.apple.com/search?entity=album&term=${this.state.searchArtist}`;
     // const itunesURL = 'https://itunes.apple.com/search?entity=album&term=kesha';
@@ -99,7 +104,7 @@ class App extends Component {
           {/* SEARCH FORM COMPONENT GOES HERE (<SearchForm />)*/}
           <SearchForm 
             handleInputChange={this.handleInputChange.bind(this)}
-            handleClick={() => this.getAlbums()}
+            handleClick={(event) => this.getAlbums(event)}
           />
         </header>
 
