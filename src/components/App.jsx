@@ -1,5 +1,6 @@
 // import the libs we need
 import React, { Component } from 'react';
+import PlayList from './PlayList/PlayList.jsx';
 import './normalize.css';
 import style from './App.css';
 
@@ -23,9 +24,9 @@ class App extends Component {
         </header>
 
         <main>
-          <div class="titles">
+          <div className="titles">
             <h2>Albums</h2>
-            <h2 class="center-title">Songs</h2>
+            <h2 className="center-title">Songs</h2>
             <h2>PlayList</h2>
           </div>
 
