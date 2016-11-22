@@ -14,20 +14,34 @@ handleYoutubeFetch () {
 
 // create a React Component called _App_
 class App extends Component {
-
   render(){
     return (
       <div id="app-container">
         <header>
-          <h1>Welcome to PERN Template</h1>
+          <h1>Project 3</h1>
+          {/* SEARCH FORM COMPONENT GOES HERE (<SearchForm />)*/}
         </header>
-        <div id={style['description-body']}>
-          <p>
-            Welcome to PERN Template. This is a temporary Hello World component
-            that may be replaced with the rest of your React client application
-          </p>
-        </div>
-      </div>
+
+        <main>
+          <div class="titles">
+            <h2>Albums</h2>
+            <h2 class="center-title">Songs</h2>
+            <h2>PlayList</h2>
+          </div>
+
+          <section>
+            {/* ALBUM LIST COMPONENT GOES HERE (<AlbumList />)*/}
+
+            {/* SONG LIST COMPONENT GOES HERE (<SongList />)*/}
+
+            {/* PLAYLIST COMPONENT GOES HERE (<PlayList />)*/}
+          </section>
+        </main>
+
+        <footer>
+
+        </footer>
+      <div>
     );
   }
 }
