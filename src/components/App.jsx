@@ -17,11 +17,16 @@ export default class App extends Component {
   } 
 
   // get a list of albums by specific artist
-  function getAlbums() {
+  getAlbums() {
     // assuming that artist name is updated to state by input handler
-    const itunesURL = 'https://itunes.apple.com/search?entity=album&term=${this.state.artistname}';
+    // const itunesURL = 'https://itunes.apple.com/search?entity=album&term=${this.state.artistname}';
+    const itunesURL = 'https://itunes.apple.com/search?entity=album&term=kesha';
 
-    fetch(itunesURL)
+    fetch(itunesURL, {
+      headers : {
+        "Access-Control-Allow-Origin" : "origin"
+      }
+    })
     .then(r => r.json())
     .then( data => {
       // console.log('getAlbums fetch', data);
@@ -36,7 +41,7 @@ export default class App extends Component {
     .then((video) => {
       // Data pulled from Api, will be determined at a later time.
     })
-    .catch(error) => console.log('You\'re looking at an Error: ', error)
+    .catch(error => console.log('You\'re looking at an Error: ', error))
   }
 
   render(){
@@ -70,7 +75,7 @@ export default class App extends Component {
         <footer>
 
         </footer>
-      <div>
+      </div>
     );
   }
 }
