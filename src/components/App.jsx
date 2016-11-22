@@ -4,7 +4,7 @@ import PlayList from './PlayList/PlayList.jsx';
 import AlbumList from './AlbumList/AlbumList.jsx';
 import './normalize.css';
 import style from './App.css';
-const $ = require('jquery');
+
 
 // create a React Component called _App_
 class App extends Component {
@@ -19,37 +19,18 @@ class App extends Component {
     };
   }
 
-      // headers : {
-      //   "Access-Control-Allow-Origin" : "http://localhost:3000",
-      //   "Access-Control-Allow-Headers" : "Origin",
-      //   "Access-Control-Allow-Methods" : "GET",
-      // }
-
-      // {mode: 'no cors'}
-
   // get a list of albums by specific artist
   getAlbums() {
     // assuming that artist name is updated to state by input handler
-    // const itunesURL = 'https://itunes.apple.com/search?entity=album&term=${this.state.artistname}';
-    const itunesURL = 'https://itunes.apple.com/search?entity=album&term=kesha';
+    const itunesURL = 'https://itunes.apple.com/search?entity=album&term=${this.state.artistname}';
 
-    // console.log($('body')[0])
-    $.ajax({
-      url : itunesURL,
-      type: 'GET',
-      dataType: 'jsonp',
-      success: data => {
-        console.log('before filtered ', data.results.length);
-        const filterAlbums = data.results.filter( el => {
-          return el.trackCount !== 1;
-        })
-        console.log('after filtered', filterAlbums.length);
-        this.setState({
-          albumList: filterAlbums,
-        });
-        console.log(this.state.albumList)
-      }
-    });
+    fetch(itunesURL)
+    .then(r => r.json())
+    .then( data => {
+      // console.log('getAlbums fetch', data);
+      /* call render function */
+    })
+    .catch(err => console.log('getAlbums error', err));
   }
 
   // handleYoutubeFetch () {
@@ -71,7 +52,7 @@ class App extends Component {
         playlist: songs
       });
     })
-    .catch(error => console.log('You\'re looking at an Error: ', error))
+    .catch(err => console.log(err));
   }
 
   // handleDelete(trackid) {
@@ -99,7 +80,7 @@ class App extends Component {
           <div className="titles">
             <h2>Albums</h2>
             <h2 className="center-title">Songs</h2>
-            <h2>Playlist</h2>
+            <h2>PlayList</h2>
           </div>
 
           <section>
