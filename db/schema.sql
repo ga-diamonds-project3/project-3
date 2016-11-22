@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS users;
 -- work on it more later
 CREATE TABLE users(
   user_id SERIAL PRIMARY KEY,
-  username TEXT NOT NULL,
+  username TEXT NOT NULL
 );
 
 CREATE TABLE playlist(
@@ -14,8 +14,9 @@ CREATE TABLE playlist(
   trackname TEXT NOT NULL,
   artistid INT NOT NULL,
   artistname TEXT NOT NULL,
-  collectionid INT NOT NULL, 
-  user_id INT NOT NULL,
+  collectionid INT NOT NULL,
+  collectionname TEXT NOT NULL,
+  user_id INT NOT NULL
 );
 
 COMMIT;

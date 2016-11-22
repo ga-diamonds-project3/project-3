@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const db     = require('../models/playlist');
+const { getPlaylist }     = require('../models/playlist.js');
 
 // get all playlist from specific user
-router.get('/:userid', (req, res) => {
-  res.send('GET method');
+router.get('/:userid', getPlaylist, (req, res) => {
+  res.json(res.results);
 });
 // insert one song to the user's playlist
 /* need trackid, trackname, artistname, collectionid, and user_id to insert */
@@ -16,3 +16,5 @@ router.post('/', (req, res) => {
 router.delete('/:trackid', (req, res) => {
   res.send('DELETE method');
 });
+
+module.exports = router;
