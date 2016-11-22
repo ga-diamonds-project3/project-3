@@ -10,4 +10,6 @@ app.use(logger('dev'));
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
+app.use('/playlist', require('./routes/playlist.js'));
+
 app.listen(PORT, () => console.log('server here! listening on', PORT));
