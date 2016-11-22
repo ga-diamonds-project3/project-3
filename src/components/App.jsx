@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import './normalize.css';
 import style from './App.css';
+import AlbumList from './AlbumList/AlbumList.jsx';
 
 // create a React Component called _App_
 export default class App extends Component {
@@ -11,6 +12,7 @@ export default class App extends Component {
     this.state = {
       // states
       artistname : '',
+      albumList  : [],
     };
   } 
 
@@ -46,14 +48,18 @@ export default class App extends Component {
         </header>
 
         <main>
-          <div class="titles">
+          <div className="titles">
             <h2>Albums</h2>
-            <h2 class="center-title">Songs</h2>
+            <h2 className="center-title">Songs</h2>
             <h2>PlayList</h2>
           </div>
 
           <section>
             {/* ALBUM LIST COMPONENT GOES HERE (<AlbumList />)*/}
+            <AlbumList 
+              getAlbums={this.getAlbums.bind(this)}
+              albumList={this.state.albumList}
+            />
 
             {/* SONG LIST COMPONENT GOES HERE (<SongList />)*/}
 
