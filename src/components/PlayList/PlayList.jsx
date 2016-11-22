@@ -24,7 +24,7 @@ class PlayList extends Component {
   }
 
   render(){
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <article className="fav-container">
         {this.renderPlayList()}
