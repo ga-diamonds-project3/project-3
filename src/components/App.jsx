@@ -80,7 +80,7 @@ class App extends Component {
           <div className="titles">
             <h2>Albums</h2>
             <h2 className="center-title">Songs</h2>
-            <h2>PlayList</h2>
+            <h2>Playlist</h2>
           </div>
 
           <section>

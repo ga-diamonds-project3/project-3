@@ -1,8 +1,7 @@
-/*.fav-container {
+.fav-container {
   display: inline-block;
   border: 1px solid blue;
   height: 85vh;
   width: 32vw;
   overflow: auto;
 }
-*/
