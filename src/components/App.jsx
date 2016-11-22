@@ -1,11 +1,13 @@
 // import the libs we need
 import React, { Component } from 'react';
+import PlayList from './PlayList/PlayList.jsx';
+import AlbumList from './AlbumList/AlbumList.jsx';
 import './normalize.css';
 import style from './App.css';
-import AlbumList from './AlbumList/AlbumList.jsx';
+const $ = require('jquery');
 
 // create a React Component called _App_
-export default class App extends Component {
+class App extends Component {
   constructor() {
     super();
 
@@ -13,8 +15,17 @@ export default class App extends Component {
       // states
       artistname : '',
       albumList  : [],
+      playlist   : [],
     };
-  } 
+  }
+
+      // headers : {
+      //   "Access-Control-Allow-Origin" : "http://localhost:3000",
+      //   "Access-Control-Allow-Headers" : "Origin",
+      //   "Access-Control-Allow-Methods" : "GET",
+      // }
+
+      // {mode: 'no cors'}
 
   // get a list of albums by specific artist
   getAlbums() {
@@ -22,27 +33,51 @@ export default class App extends Component {
     // const itunesURL = 'https://itunes.apple.com/search?entity=album&term=${this.state.artistname}';
     const itunesURL = 'https://itunes.apple.com/search?entity=album&term=kesha';
 
-    fetch(itunesURL, {
-      headers : {
-        "Access-Control-Allow-Origin" : "origin"
+    // console.log($('body')[0])
+    $.ajax({
+      url : itunesURL,
+      type: 'GET',
+      dataType: 'jsonp',
+      success: data => {
+        console.log(data);
       }
-    })
-    .then(r => r.json())
-    .then( data => {
-      // console.log('getAlbums fetch', data);
-      /* call render function */ 
-    })
-    .catch(err => console.log('getAlbums error', err));
+    });
   }
 
-  handleYoutubeFetch () {
-    fetch(`http://localhost:3000/api/youtube`)
+  // handleYoutubeFetch () {
+  //   fetch(`http://localhost:3000/api/youtube`)
+  //   .then(r => r.json())
+  //   .then((video) => {
+  //     // Data pulled from Api, will be determined at a later time.
+  //   })
+  //   .catch(error) => console.log('You\'re looking at an Error: ', error)
+  // }
+
+  // function that will hit our database API and set an array of data to the playlist state
+  getPlayList() {
+    fetch('/playlist/1')
     .then(r => r.json())
-    .then((video) => {
-      // Data pulled from Api, will be determined at a later time.
+    .then((songs) => {
+      this.setState({
+
+        playlist: songs
+      });
     })
     .catch(error => console.log('You\'re looking at an Error: ', error))
   }
+
+  // handleDelete(trackid) {
+  //   fetch(`/api/puppies/${id}`, {
+  //     method: 'DELETE'
+  //   })
+  //   .then(() => {
+  //     const playlist = this.state.playlist.filter((track) => {
+  //       return track.trackid !== trackid;
+  //     })
+  //     this.setState({ playlist: playlist })
+  //   })
+  //   .catch(err => console.log(err));
+  // }
 
   render(){
     return (
@@ -61,14 +96,18 @@ export default class App extends Component {
 
           <section>
             {/* ALBUM LIST COMPONENT GOES HERE (<AlbumList />)*/}
-            <AlbumList 
+            <AlbumList
               getAlbums={this.getAlbums.bind(this)}
               albumList={this.state.albumList}
             />
 
             {/* SONG LIST COMPONENT GOES HERE (<SongList />)*/}
 
-            {/* PLAYLIST COMPONENT GOES HERE (<PlayList />)*/}
+            <PlayList
+              getPlayList={this.getPlayList.bind(this)}
+              playlist={this.state.playlist}
+              // handleDelete={this.handleDelete.bind(this)}
+             />
           </section>
         </main>
 
@@ -79,3 +118,5 @@ export default class App extends Component {
     );
   }
 }
+
+export default App;
