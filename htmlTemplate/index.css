@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+ /*border: 1px solid blue;*/
+ text-align: center;
+}
+
+.titles {
+  /*border: 1px solid blue;*/
+  text-align: center;
+}
+
+.titles h2 {
+  display: inline-block;
+}
+
+.center-title {
+  margin: 1vh 25vw 1vh 25vw;
+}
+
+section {
+  /*border: 1px solid red;*/
+  display: flex;
+  justify-content: center;
+}
+
+.albums-container {
+  display: inline-block;
+  border: 1px solid blue;
+  height: 85vh;
+  width: 32vw;
+  overflow: auto;
+}
+
+.albumItem  {
+  border-bottom: 1px solid green;
+  padding: 1vh 1vw;
+  width: 32vw;
+  height: 15vh;
+}
+
+.album-img {
+  display: inline-block;
+  height: 10vh;
+  width: 7vw;
+  background-color: grey;
+  border: 1px solid black;
+}
+
+.album-info {
+  display: inline-block;
+  /*height: 10vh;
+  width: 10vw;*/
+}
+
+.songs-container {
+  display: inline-block;
+  border: 1px solid blue;
+  height: 85vh;
+  width: 32vw;
+  overflow: auto;
+}
+
+.songItem {
+  border-bottom: 1px solid green;
+  padding: 1vh 1vw;
+  width: 32vw;
+  height: 15vh;
+}
+
+.fav-container {
+  display: inline-block;
+  border: 1px solid blue;
+  height: 85vh;
+  width: 32vw;
+  overflow: auto;
+}
+
+.favItem {
+  border-bottom: 1px solid green;
+  padding: 1vh 1vw;
+  width: 32vw;
+  height: 15vh;
+}
+
+
