@@ -1,14 +1,30 @@
-header {
-  background-color: #393939;
-  padding: 20px;
-}
-
-header h1 {
-  color: #FAFAFA;
+/** {
   margin: 0;
-  font-family: sans-serif;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-#description-body {
-  padding: 20px;
+header {
+ border: 1px solid blue;
+ text-align: center;
 }
+
+.titles {
+  border: 1px solid blue;
+  text-align: center;
+}
+
+.titles h2 {
+  display: inline-block;
+}
+
+.center-title {
+  margin: 1vh 25vw 1vh 25vw;
+}
+
+section {
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+}
+*/
