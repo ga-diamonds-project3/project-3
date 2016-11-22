@@ -12,6 +12,7 @@ CREATE TABLE users(
 CREATE TABLE playlist(
   trackid INT NOT NULL,
   trackname TEXT NOT NULL,
+  artistid INT NOT NULL,
   artistname TEXT NOT NULL,
   collectionid INT NOT NULL, 
   user_id INT NOT NULL,
