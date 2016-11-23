@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import PlayList from './PlayList/PlayList.jsx';
 import AlbumList from './AlbumList/AlbumList.jsx';
+import SearchForm from './SearchForm/SearchForm.jsx';
 import './normalize.css';
 import style from './App.css';
 
@@ -13,24 +14,48 @@ class App extends Component {
 
     this.state = {
       // states
-      artistname : '',
-      albumList  : [],
-      playlist   : [],
+      artistname    : '',
+      searchArtist  : '',
+      albumList     : [],
+      playlist      : [],
     };
   }
 
   // get a list of albums by specific artist
   getAlbums() {
     // assuming that artist name is updated to state by input handler
-    const itunesURL = 'https://itunes.apple.com/search?entity=album&term=${this.state.artistname}';
+    const itunesURL = `https://itunes.apple.com/search?entity=album&term=${this.state.searchArtist}`;
+    // const itunesURL = 'https://itunes.apple.com/search?entity=album&term=kesha';
 
-    fetch(itunesURL)
-    .then(r => r.json())
-    .then( data => {
-      // console.log('getAlbums fetch', data);
-      /* call render function */
-    })
-    .catch(err => console.log('getAlbums error', err));
+    // console.log($('body')[0])
+    $.ajax({
+      url : itunesURL,
+      type: 'GET',
+      dataType: 'jsonp',
+      success: data => {
+        console.log('before filtered ', data.results.length);
+        const filterAlbums = data.results.filter( el => {
+          return el.trackCount !== 1;
+        })
+        console.log('after filtered', filterAlbums.length);
+        this.setState({
+          albumList: filterAlbums,
+        });
+        console.log(this.state.albumList)
+      }
+    });
+
+    this.setState({
+      searchArtist: '',
+    });
+  }
+  // udpate searchArtist state on every change at input search
+  handleInputChange(e) {
+    // console.log('input value:', e);
+    this.setState({
+      searchArtist: e.target.value,
+    });
+
   }
 
   // handleYoutubeFetch () {
@@ -74,6 +99,10 @@ class App extends Component {
         <header>
           <h1>Project 3</h1>
           {/* SEARCH FORM COMPONENT GOES HERE (<SearchForm />)*/}
+          <SearchForm
+            handleInputChange={this.handleInputChange.bind(this)}
+            handleClick={() => this.getAlbums()}
+          />
         </header>
 
         <main>
@@ -86,7 +115,6 @@ class App extends Component {
           <section>
             {/* ALBUM LIST COMPONENT GOES HERE (<AlbumList />)*/}
             <AlbumList
-              getAlbums={this.getAlbums.bind(this)}
               albumList={this.state.albumList}
             />
 
