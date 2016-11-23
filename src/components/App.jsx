@@ -72,7 +72,7 @@ class App extends Component {
   // get a list of songs by specific album
   getSongs() {
     // assuming that album is updated to state by click handler
-    const itunesSongsURL = `https://itunes.apple.com/search?term=${this.state.searchArtist}&entity=song`;
+    const itunesSongsURL = `https://itunes.apple.com/lookup?id=${this.state.albumSelected}&entity=song`;
 
     // console.log($('body')[0])
     $.ajax({
@@ -81,13 +81,14 @@ class App extends Component {
       dataType: 'jsonp',
       success: data => {
         console.log(this.state.searchArtist);
-        console.log('before filtered ', data.results.length);
-        const filterSongs = data.results.filter( el => {
-          return el.collectionId === this.state.albumSelected;
-        })
-        console.log('after filtered', filterSongs.length);
+        console.log(data.results.length);
+        // console.log('before filtered ', data.results.length);
+        // const filterSongs = data.results.filter( el => {
+        //   return el.collectionId === 363542298;
+        // })
+        // console.log('after filtered', filterSongs.length);
         this.setState({
-          songList: filterSongs,
+          songList: data.results,
         });
         console.log(this.state.songList)
       }
