@@ -7,7 +7,7 @@ import SearchForm from './SearchForm/SearchForm.jsx';
 
 import './normalize.css';
 import style from './App.css';
-
+const $ = require('jquery');
 
 // create a React Component called _App_
 class App extends Component {
