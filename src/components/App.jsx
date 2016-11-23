@@ -17,11 +17,21 @@ class App extends Component {
       // states
       artistname    : '',
       searchArtist  : '',
+      albumSelected : '',
       albumList     : [],
       playlist      : [],
       songList      : [],
 
     };
+  }
+
+  // udpate searchArtist state on every change at input search
+  handleInputChange(e) {
+    // console.log('input value:', e);
+    this.setState({
+      searchArtist: e.target.value,
+    });
+
   }
 
   // get a list of albums by specific artist
@@ -38,28 +48,27 @@ class App extends Component {
       const filterAlbums = data.results.filter( el => {
         return el.trackCount !== 1;
       })
-      // console.log('after filtered', filterAlbums.length);
+      console.log(filterAlbums);
       this.setState({
         albumList: filterAlbums,
       });
     })
     .catch(err => console.log('itunes fetch error', err));
   }
-  // udpate searchArtist state on every change at input search
-  handleInputChange(e) {
-    // console.log('input value:', e);
-    this.setState({
-      searchArtist: e.target.value,
-    });
 
-  }
 
   changeAlbumSelection(num) {
+    console.log('in changeAlbumSelection')
     this.setState({
       albumSelected: this.state.albumList[num].collectionId,
     });
-    console.log(this.state.albumSelected)
+    console.log('state', this.state.albumSelected);
+    // if (this.state.albumSelected !== '') {
+      setTimeout(()=>{this.getSongs()}, 500);
+    // }
   }
+
+
 
   // get a list of songs by specific album
   getSongs() {
@@ -68,13 +77,6 @@ class App extends Component {
     fetch(`/itunes/songs/${this.state.albumSelected}`)
     .then(r => r.json())
     .then(data => {
-      // console.log(this.state.searchArtist);
-      // console.log(data.results.length);
-      // console.log('before filtered ', data.results.length);
-      // const filterSongs = data.results.filter( el => {
-      //   return el.collectionId === 363542298;
-      // })
-      // console.log('after filtered', filterSongs.length);
       this.setState({
         songList: data.results,
       });
@@ -82,6 +84,7 @@ class App extends Component {
     })
     .catch(err => console.log('getsongs error', err));
   }
+
   // function that will hit our database API and set an array of data to the playlist state
   getPlayList() {
     fetch('/playlist/1')
