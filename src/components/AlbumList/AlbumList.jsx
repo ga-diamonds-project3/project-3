@@ -12,7 +12,11 @@ export default class AlbumList extends Component {
   renderAlbums() {
     // use map on this.props.albumList to render
     return this.props.albumList.map((album, index) =>
-      <article key={index} className="albums-item" onClick={()=>{this.props.changeAlbumSelection(index); this.props.getSongs()}}>
+      <article
+        key={index}
+        className="albums-item"
+        onClick={()=>this.props.changeAlbumSelection(index)}
+      >
         <AlbumListItem
           key={index}
           artistName={album.artistName}
