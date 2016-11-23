@@ -6,15 +6,18 @@ export default class SearchForm extends Component {
   render() {
 
     // clear text in the input field
+    /*onClick={this.props.handleClick}*/
 
     return(
       <div className="search-form">
+      <form onSubmit={this.props.handleClick}>
         <input 
           type="text" 
           placeholder="Artist" 
           onChange={event => this.props.handleInputChange(event)}
         />
-        <button onClick={this.props.handleClick}>Search</button>
+        <button >Search</button>
+      </form>
       </div>
     )
   }

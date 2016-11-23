@@ -4,15 +4,19 @@ import AlbumListItem from '../AlbumListItem/AlbumListItem.jsx';
 
 export default class AlbumList extends Component {
 
- componentWillMount() {
-    this.props.getSongs();
-  }
+ // componentWillMount() {
+ //    this.props.getSongs();
+ //  }
 
   // uses albumList props to send album and key to AlbumListItem component
   renderAlbums() {
     // use map on this.props.albumList to render
     return this.props.albumList.map((album, index) =>
-      <article key={index} className="albums-item" onClick={()=>{this.props.changeAlbumSelection(index); this.props.getSongs()}}>
+      <article
+        key={index}
+        className="albums-item"
+        onClick={()=>this.props.changeAlbumSelection(index)}
+      >
         <AlbumListItem
           key={index}
           artistName={album.artistName}
