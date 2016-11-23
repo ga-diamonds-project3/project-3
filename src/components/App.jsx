@@ -2,7 +2,9 @@
 import React, { Component } from 'react';
 import PlayList from './PlayList/PlayList.jsx';
 import AlbumList from './AlbumList/AlbumList.jsx';
+import SongList from './SongList/SongList.jsx';
 import SearchForm from './SearchForm/SearchForm.jsx';
+
 import './normalize.css';
 import style from './App.css';
 const $ = require('jquery');
@@ -18,8 +20,11 @@ class App extends Component {
       searchArtist  : '',
       albumList     : [],
       playlist      : [],
+      songList      : [],
+
     };
   }
+
   // get a list of albums by specific artist
   getAlbums() {
     // assuming that artist name is updated to state by input handler
@@ -32,21 +37,21 @@ class App extends Component {
       type: 'GET',
       dataType: 'jsonp',
       success: data => {
-        console.log('before filtered ', data.results.length);
+        // console.log('before filtered ', data.results.length);
         const filterAlbums = data.results.filter( el => {
           return el.trackCount !== 1;
         })
-        console.log('after filtered', filterAlbums.length);
+        // console.log('after filtered', filterAlbums.length);
         this.setState({
           albumList: filterAlbums,
         });
-        console.log(this.state.albumList)
+        // console.log(this.state.albumList)
       }
     });
 
-    this.setState({
-      searchArtist: '',
-    });
+    // this.setState({
+    //   searchArtist: '',
+    // });
   }
   // udpate searchArtist state on every change at input search
   handleInputChange(e) {
@@ -54,16 +59,41 @@ class App extends Component {
     this.setState({
       searchArtist: e.target.value,
     });
+
   }
 
-  // handleYoutubeFetch () {
-  //   fetch(`http://localhost:3000/api/youtube`)
-  //   .then(r => r.json())
-  //   .then((video) => {
-  //     // Data pulled from Api, will be determined at a later time.
-  //   })
-  //   .catch(error) => console.log('You\'re looking at an Error: ', error)
-  // }
+  changeAlbumSelection(num) {
+    this.setState({
+      albumSelected: this.state.albumList[num].collectionId,
+    });
+    console.log(this.state.albumSelected)
+  }
+
+  // get a list of songs by specific album
+  getSongs() {
+    // assuming that album is updated to state by click handler
+    const itunesSongsURL = `https://itunes.apple.com/lookup?id=${this.state.albumSelected}&entity=song`;
+
+    // console.log($('body')[0])
+    $.ajax({
+      url : itunesSongsURL,
+      type: 'GET',
+      dataType: 'jsonp',
+      success: data => {
+        console.log(this.state.searchArtist);
+        console.log(data.results.length);
+        // console.log('before filtered ', data.results.length);
+        // const filterSongs = data.results.filter( el => {
+        //   return el.collectionId === 363542298;
+        // })
+        // console.log('after filtered', filterSongs.length);
+        this.setState({
+          songList: data.results,
+        });
+        console.log(this.state.songList)
+      }
+    });
+  }
 
   // function that will hit our database API and set an array of data to the playlist state
   getPlayList() {
@@ -75,7 +105,7 @@ class App extends Component {
         playlist: songs
       });
     })
-    .catch(error => console.log('You\'re looking at an Error: ', error))
+    .catch(err => console.log(err));
   }
 
   // handleDelete(trackid) {
@@ -91,13 +121,23 @@ class App extends Component {
   //   .catch(err => console.log(err));
   // }
 
+  // handleYoutubeFetch () {
+  //   fetch(`http://localhost:3000/api/youtube`)
+  //   .then(r => r.json())
+  //   .then((video) => {
+  //     // Data pulled from Api, will be determined at a later time.
+  //   })
+  //   .catch(error) => console.log('You\'re looking at an Error: ', error)
+  // }
+
+
   render(){
     return (
       <div id="app-container">
         <header>
           <h1>Project 3</h1>
           {/* SEARCH FORM COMPONENT GOES HERE (<SearchForm />)*/}
-          <SearchForm 
+          <SearchForm
             handleInputChange={this.handleInputChange.bind(this)}
             handleClick={() => this.getAlbums()}
           />
@@ -114,10 +154,16 @@ class App extends Component {
             {/* ALBUM LIST COMPONENT GOES HERE (<AlbumList />)*/}
             <AlbumList
               albumList={this.state.albumList}
+              changeAlbumSelection={this.changeAlbumSelection.bind(this)}
+              getSongs={this.getSongs.bind(this)}
             />
 
             {/* SONG LIST COMPONENT GOES HERE (<SongList />)*/}
+            <SongList
+              songList={this.state.songList}
+            />
 
+          {/* PLAYLIST COMPONENT GOES HERE (<PlayList />)*/}
             <PlayList
               getPlayList={this.getPlayList.bind(this)}
               playlist={this.state.playlist}
