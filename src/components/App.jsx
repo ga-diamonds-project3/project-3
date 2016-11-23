@@ -25,37 +25,11 @@ class App extends Component {
   }
 
   // get a list of albums by specific artist
-// <<<<<<< HEAD
-//   getAlbums() {
-// =======
-//   getAlbums(e) {
-//     // prevent form from redirecting to new page
-//     e.preventDefault();
-//     // clear input when user searches an artist
-//     e.target.reset();
-
-//     // assuming that artist name is updated to state by input handler
-//     const itunesURL = `https://itunes.apple.com/search?entity=album&term=${this.state.searchArtist}`;
-//     // const itunesURL = 'https://itunes.apple.com/search?entity=album&term=kesha';
-
-//     // console.log($('body')[0])
-//     $.ajax({
-//       url : itunesURL,
-//       type: 'GET',
-//       dataType: 'jsonp',
-//       success: data => {
-//         // console.log('before filtered ', data.results.length);
-//         const filterAlbums = data.results.filter( el => {
-//           return el.trackCount !== 1;
-//         })
-//         // console.log('after filtered', filterAlbums.length);
-//         this.setState({
-//           albumList: filterAlbums,
-//         });
-//         // console.log(this.state.albumList)
-//       }
-//     });
-// >>>>>>> artistSearchForm
+  getAlbums(e) {
+    // prevent form from redirecting to new page
+    e.preventDefault();
+    // clear input when user searches an artist
+    e.target.reset();
 
     // assuming that artist name is updated to state by input handler
     fetch(`/itunes/${this.state.searchArtist}`)
