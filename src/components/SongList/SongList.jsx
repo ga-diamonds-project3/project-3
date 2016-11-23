@@ -4,10 +4,6 @@ import style from './SongList.css';
 
 class SongList extends Component {
 
-  componentWillMount() {
-    this.props.getSongs();
-  }
-
 
   // This function will create a PlayListItem for each song saved to the playlist database
   renderSongList() {

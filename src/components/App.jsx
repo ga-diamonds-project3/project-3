@@ -49,9 +49,9 @@ class App extends Component {
       }
     });
 
-    this.setState({
-      searchArtist: '',
-    });
+    // this.setState({
+    //   searchArtist: '',
+    // });
   }
   // udpate searchArtist state on every change at input search
   handleInputChange(e) {
@@ -62,11 +62,17 @@ class App extends Component {
 
   }
 
+  changeAlbumSelection(num) {
+    this.setState({
+      albumSelected: this.state.albumList[num].collectionId,
+    });
+    console.log(this.state.albumSelected)
+  }
+
   // get a list of songs by specific album
   getSongs() {
-    // assuming that album is updated to state by input handler
-    // const itunesURL = 'https://itunes.apple.com/search?entity=album&term=${this.state.artistname}';
-    const itunesSongsURL = 'https://itunes.apple.com/search?term=kesha&entity=song';
+    // assuming that album is updated to state by click handler
+    const itunesSongsURL = `https://itunes.apple.com/search?term=${this.state.searchArtist}&entity=song`;
 
     // console.log($('body')[0])
     $.ajax({
@@ -74,13 +80,14 @@ class App extends Component {
       type: 'GET',
       dataType: 'jsonp',
       success: data => {
-        // console.log('before filtered ', data.results.length);
-        // const filterSongs = data.results.filter( el => {
-        //   return el.collectionId !== 344796445;
-        // })
-        // console.log('after filtered', filterSongs.length);
+        console.log(this.state.searchArtist);
+        console.log('before filtered ', data.results.length);
+        const filterSongs = data.results.filter( el => {
+          return el.collectionId === this.state.albumSelected;
+        })
+        console.log('after filtered', filterSongs.length);
         this.setState({
-          songList: data.results,
+          songList: filterSongs,
         });
         console.log(this.state.songList)
       }
@@ -146,11 +153,12 @@ class App extends Component {
             {/* ALBUM LIST COMPONENT GOES HERE (<AlbumList />)*/}
             <AlbumList
               albumList={this.state.albumList}
+              changeAlbumSelection={this.changeAlbumSelection.bind(this)}
+              getSongs={this.getSongs.bind(this)}
             />
 
             {/* SONG LIST COMPONENT GOES HERE (<SongList />)*/}
             <SongList
-              getSongs={this.getSongs.bind(this)}
               songList={this.state.songList}
             />
 

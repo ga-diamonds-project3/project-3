@@ -12,11 +12,12 @@ import style from './AlbumListItem.css';
 export default class AlbumListItem extends Component {
   render() {
     return(
-      <div className="album-list-item"  key={this.props.index}>
-        <p>{this.props.artistName}</p>
-        <p>{this.props.collectionName}</p>
-        <p>{this.props.trackCount}</p>
+      <div className="albumItem"  key={this.props.index}>
         <img src={this.props.artworkUrl100} alt="Album Art" />
+        <div className="album-info">
+          <p>{this.props.collectionName}</p>
+          <p>- {this.props.artistName}</p>
+        </div>
       </div>
     )
   }
