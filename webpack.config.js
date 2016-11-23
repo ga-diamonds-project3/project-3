@@ -31,10 +31,6 @@ module.exports = {
     }),
     new ExtractTextPlugin('/css/[name].css', {
       allChunks: true
-    }),
-    new webpack.ProvidePlugin({
-        'window.jQuery': 'jquery',
-        'window.$': 'jquery',
     })
   ],
 

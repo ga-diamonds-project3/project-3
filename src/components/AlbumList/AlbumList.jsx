@@ -4,9 +4,9 @@ import AlbumListItem from '../AlbumListItem/AlbumListItem.jsx';
 
 export default class AlbumList extends Component {
 
- componentWillMount() {
-    this.props.getSongs();
-  }
+ // componentWillMount() {
+ //    this.props.getSongs();
+ //  }
 
   // uses albumList props to send album and key to AlbumListItem component
   renderAlbums() {
