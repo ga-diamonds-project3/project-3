@@ -3,9 +3,11 @@ import React, { Component } from 'react';
 import PlayList from './PlayList/PlayList.jsx';
 import AlbumList from './AlbumList/AlbumList.jsx';
 import SongList from './SongList/SongList.jsx';
+import SearchForm from './SearchForm/SearchForm.jsx';
+
 import './normalize.css';
 import style from './App.css';
-const $ = require('jquery');
+
 
 // create a React Component called _App_
 class App extends Component {
@@ -14,26 +16,20 @@ class App extends Component {
 
     this.state = {
       // states
-      artistname : '',
-      albumList  : [],
-      playlist   : [],
-      songList   : [],
+      artistname    : '',
+      searchArtist  : '',
+      albumList     : [],
+      playlist      : [],
+      songList      : [],
+
     };
   }
-
-      // headers : {
-      //   "Access-Control-Allow-Origin" : "http://localhost:3000",
-      //   "Access-Control-Allow-Headers" : "Origin",
-      //   "Access-Control-Allow-Methods" : "GET",
-      // }
-
-      // {mode: 'no cors'}
 
   // get a list of albums by specific artist
   getAlbums() {
     // assuming that artist name is updated to state by input handler
-    // const itunesURL = 'https://itunes.apple.com/search?entity=album&term=${this.state.artistname}';
-    const itunesURL = 'https://itunes.apple.com/search?entity=album&term=kesha';
+    const itunesURL = `https://itunes.apple.com/search?entity=album&term=${this.state.searchArtist}`;
+    // const itunesURL = 'https://itunes.apple.com/search?entity=album&term=kesha';
 
     // console.log($('body')[0])
     $.ajax({
@@ -52,6 +48,18 @@ class App extends Component {
         // console.log(this.state.albumList)
       }
     });
+
+    this.setState({
+      searchArtist: '',
+    });
+  }
+  // udpate searchArtist state on every change at input search
+  handleInputChange(e) {
+    // console.log('input value:', e);
+    this.setState({
+      searchArtist: e.target.value,
+    });
+
   }
 
   // get a list of songs by specific album
@@ -89,7 +97,7 @@ class App extends Component {
         playlist: songs
       });
     })
-    .catch(error => console.log('You\'re looking at an Error: ', error))
+    .catch(err => console.log(err));
   }
 
   // handleDelete(trackid) {
@@ -121,19 +129,22 @@ class App extends Component {
         <header>
           <h1>Project 3</h1>
           {/* SEARCH FORM COMPONENT GOES HERE (<SearchForm />)*/}
+          <SearchForm
+            handleInputChange={this.handleInputChange.bind(this)}
+            handleClick={() => this.getAlbums()}
+          />
         </header>
 
         <main>
           <div className="titles">
             <h2>Albums</h2>
             <h2 className="center-title">Songs</h2>
-            <h2>Playlist</h2>
+            <h2>PlayList</h2>
           </div>
 
           <section>
             {/* ALBUM LIST COMPONENT GOES HERE (<AlbumList />)*/}
             <AlbumList
-              getAlbums={this.getAlbums.bind(this)}
               albumList={this.state.albumList}
             />
 
