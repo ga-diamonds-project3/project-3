@@ -1,0 +1,20 @@
+.albumItem  {
+  border-bottom: 1px solid green;
+  padding: 1vh 1vw;
+  width: 32vw;
+  height: 15vh;
+}
+
+.album-img {
+  display: inline-block;
+  height: 10vh;
+  width: 7vw;
+  background-color: grey;
+  border: 1px solid black;
+}
+
+.album-info {
+  display: inline-block;
+  /*height: 10vh;
+  width: 10vw;*/
+}
