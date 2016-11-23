@@ -7,7 +7,6 @@ import SearchForm from './SearchForm/SearchForm.jsx';
 
 import './normalize.css';
 import style from './App.css';
-const $ = require('jquery');
 
 // create a React Component called _App_
 class App extends Component {
@@ -26,32 +25,25 @@ class App extends Component {
   }
 
   // get a list of albums by specific artist
-  getAlbums() {
+  getAlbums(e) {
+    // prevent form from redirecting to new page
+    e.preventDefault();
+    // clear input when user searches an artist
+    e.target.reset();
+
     // assuming that artist name is updated to state by input handler
-    const itunesURL = `https://itunes.apple.com/search?entity=album&term=${this.state.searchArtist}`;
-    // const itunesURL = 'https://itunes.apple.com/search?entity=album&term=kesha';
-
-    // console.log($('body')[0])
-    $.ajax({
-      url : itunesURL,
-      type: 'GET',
-      dataType: 'jsonp',
-      success: data => {
-        // console.log('before filtered ', data.results.length);
-        const filterAlbums = data.results.filter( el => {
-          return el.trackCount !== 1;
-        })
-        // console.log('after filtered', filterAlbums.length);
-        this.setState({
-          albumList: filterAlbums,
-        });
-        // console.log(this.state.albumList)
-      }
-    });
-
-    // this.setState({
-    //   searchArtist: '',
-    // });
+    fetch(`/itunes/${this.state.searchArtist}`)
+    .then(r => r.json())
+    .then(data => {
+      const filterAlbums = data.results.filter( el => {
+        return el.trackCount !== 1;
+      })
+      // console.log('after filtered', filterAlbums.length);
+      this.setState({
+        albumList: filterAlbums,
+      });
+    })
+    .catch(err => console.log('itunes fetch error', err));
   }
   // udpate searchArtist state on every change at input search
   handleInputChange(e) {
@@ -71,30 +63,25 @@ class App extends Component {
 
   // get a list of songs by specific album
   getSongs() {
+    console.log('HIT')
     // assuming that album is updated to state by click handler
-    const itunesSongsURL = `https://itunes.apple.com/lookup?id=${this.state.albumSelected}&entity=song`;
-
-    // console.log($('body')[0])
-    $.ajax({
-      url : itunesSongsURL,
-      type: 'GET',
-      dataType: 'jsonp',
-      success: data => {
-        console.log(this.state.searchArtist);
-        console.log(data.results.length);
-        // console.log('before filtered ', data.results.length);
-        // const filterSongs = data.results.filter( el => {
-        //   return el.collectionId === 363542298;
-        // })
-        // console.log('after filtered', filterSongs.length);
-        this.setState({
-          songList: data.results,
-        });
-        console.log(this.state.songList)
-      }
-    });
+    fetch(`/itunes/songs/${this.state.albumSelected}`)
+    .then(r => r.json())
+    .then(data => {
+      // console.log(this.state.searchArtist);
+      // console.log(data.results.length);
+      // console.log('before filtered ', data.results.length);
+      // const filterSongs = data.results.filter( el => {
+      //   return el.collectionId === 363542298;
+      // })
+      // console.log('after filtered', filterSongs.length);
+      this.setState({
+        songList: data.results,
+      });
+      console.log(this.state.songList)
+    })
+    .catch(err => console.log('getsongs error', err));
   }
-
   // function that will hit our database API and set an array of data to the playlist state
   getPlayList() {
     fetch('/playlist/1')
@@ -139,7 +126,7 @@ class App extends Component {
           {/* SEARCH FORM COMPONENT GOES HERE (<SearchForm />)*/}
           <SearchForm
             handleInputChange={this.handleInputChange.bind(this)}
-            handleClick={() => this.getAlbums()}
+            handleClick={(event) => this.getAlbums(event)}
           />
         </header>
 
