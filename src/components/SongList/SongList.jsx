@@ -15,9 +15,9 @@ class SongList extends Component {
       <SongListItem
         // handleLikePuppy={this.props.handleLikePuppy}
         // handleAbandonment={this.props.handleAbandonment}
-        name={song.trackname}
-        album={song.collectionname}
-        artist={song.artistname}
+        name={song.trackName}
+        album={song.collectionName}
+        artist={song.artistName}
         key={i}
       />
     );
