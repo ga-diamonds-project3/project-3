@@ -74,10 +74,11 @@ section {
 
 .fav-container {
   display: inline-block;
-  border: 1px solid blue;
+  border: 1px solid red;
   height: 85vh;
   width: 32vw;
   overflow: auto;
+
 }
 
 .favItem {
@@ -85,6 +86,7 @@ section {
   padding: 1vh 1vw;
   width: 32vw;
   height: 15vh;
+  color:red;
 }
 
 
