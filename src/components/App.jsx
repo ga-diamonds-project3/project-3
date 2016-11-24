@@ -18,10 +18,11 @@ class App extends Component {
       artistname    : '',
       searchArtist  : '',
       albumSelected : '',
+      songSelected  : '',
       albumList     : [],
       playlist      : [],
       songList      : [],
-
+      songForDB     : [],
     };
   }
 
@@ -48,7 +49,7 @@ class App extends Component {
       const filterAlbums = data.results.filter( el => {
         return el.trackCount !== 1;
       })
-      console.log(filterAlbums);
+      console.log('album list', filterAlbums);
       this.setState({
         albumList: filterAlbums,
       });
@@ -56,23 +57,22 @@ class App extends Component {
     .catch(err => console.log('itunes fetch error', err));
   }
 
-
+  // on album click the albumSelected state will update to the id of the album
+  // selected the fire the getSongs function
   changeAlbumSelection(num) {
-    console.log('in changeAlbumSelection')
+    // console.log('in changeAlbumSelection')
     this.setState({
       albumSelected: this.state.albumList[num].collectionId,
     });
-    console.log('state', this.state.albumSelected);
+    setTimeout(()=>{console.log('selected album id is', this.state.albumSelected)}, 0);
     // if (this.state.albumSelected !== '') {
-      setTimeout(()=>{this.getSongs()}, 0);
+    setTimeout(()=>{this.getSongs()}, 0);
     // }
   }
 
-
-
-  // get a list of songs by specific album
+  // get a list of songs by album id
   getSongs() {
-    console.log('HIT')
+    // console.log('HIT')
     // assuming that album is updated to state by click handler
     fetch(`/itunes/songs/${this.state.albumSelected}`)
     .then(r => r.json())
@@ -80,10 +80,39 @@ class App extends Component {
       this.setState({
         songList: data.results,
       });
-      console.log(this.state.songList)
+      console.log('song list for album', this.state.songList)
     })
     .catch(err => console.log('getsongs error', err));
   }
+
+  // change songSelected stat to track id of song clicked
+  // runs getSong function
+  changeSongSelcted(num) {
+    this.setState({
+      songSelected: this.state.songList[num].trackId,
+    });
+    setTimeout(()=>{console.log('selected song id is', this.state.songSelected)}, 0);
+    setTimeout(()=>{this.getSong()}, 0);
+  }
+
+  // retuns a json of the specific song selected
+  getSong() {
+    // console.log('HIT')
+    // assuming that album is updated to state by click handler
+    fetch(`/itunes/songs/${this.state.albumSelected}`)
+    .then(r => r.json())
+    .then(data => {
+      const filterSongs = data.results.filter( el => {
+        return el.trackId === this.state.songSelected ;
+      })
+      this.setState({
+        songForDB: filterSongs,
+      });
+      console.log('song selected', this.state.songForDB)
+    })
+    .catch(err => console.log('getSong error', err));
+  }
+
 
   // function that will hit our database API and set an array of data to the playlist state
   getPlayList() {
@@ -151,6 +180,7 @@ class App extends Component {
             {/* SONG LIST COMPONENT GOES HERE (<SongList />)*/}
             <SongList
               songList={this.state.songList}
+              changeSongSelected={this.changeSongSelcted.bind(this)}
             />
 
           {/* PLAYLIST COMPONENT GOES HERE (<PlayList />)*/}
