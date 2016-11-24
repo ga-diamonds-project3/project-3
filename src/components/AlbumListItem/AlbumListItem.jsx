@@ -14,9 +14,9 @@ export default class AlbumListItem extends Component {
     return(
       <div className="albumItem"  key={this.props.index}>
         <img className="album-img" src={this.props.artworkUrl100} alt="Album Art" />
-        <div className="album-info">
-          <p>{this.props.collectionName}</p>
-          <p>{this.props.artistName}</p>
+        <div className="albumInfo">
+        <p>{this.props.collectionName}</p>
+        <p>{this.props.artistName}</p>
         </div>
       </div>
     )

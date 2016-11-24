@@ -1,28 +1,25 @@
-/*.albumItem  {
-  display: inline-block;
-  text-align: center;
-  border: 1px solid green;
-  padding-top: 1vh;
-  width: 15vw;
-  height: 25vh;
-}*/
+.albumItem  {
+  /*border: 1px solid black;*/
+  width: 15.7vw;
+  height: 30vh;
+  /*display: flex;*/
+  font-size: 10px;
+  padding: 2vh 2vw;
+  box-shadow: 5px 5px 5px #888888;
+}
 
 .album-img {
-  display: inline-block;
-  width: 12vw;
-  height: 16vh;
+  display: block;
+  width: 150px;
+  height: 150px;
   background-color: grey;
   border: 1px solid #DADADA;
   border-radius: 5px;
-  margin-top: 2vh;
-  margin-left: 2vw;
+  /*margin-top: 2vh;*/
+  /*margin-left: 2vw;*/
 }
 
-.album-info {
-  margin-left: 2vw;
-}
+.albumInfo {
+  display: block;
 
-.album-info p {
-  font-size: 10px;
-  /*display: inline-block;*/
 }
