@@ -5,3 +5,7 @@
   width: 32vw;
   overflow: auto;
 }
+
+.albums-item {
+  display: inline-block;
+}
