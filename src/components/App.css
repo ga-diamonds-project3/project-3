@@ -5,12 +5,16 @@
 }
 
 header {
- border: 1px solid blue;
+ /*border: 1px solid blue;*/
  text-align: center;
 }
 
+header h1 {
+  margin: 0;
+}
+
 .titles {
-  border: 1px solid blue;
+  /*border: 1px solid blue;*/
   text-align: center;
 }
 
@@ -23,7 +27,7 @@ header {
 }
 
 section {
-  border: 1px solid red;
+  /*border: 1px solid red;*/
   display: flex;
   justify-content: center;
 }

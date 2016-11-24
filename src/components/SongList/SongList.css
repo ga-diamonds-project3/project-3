@@ -1,7 +1,8 @@
 .song-container {
   display: inline-block;
-  border: 1px solid blue;
-  height: 85vh;
+  /*border: 1px solid blue;*/
+  height: 80vh;
   width: 32vw;
   overflow: auto;
+  padding: 1vh 1vw;
 }

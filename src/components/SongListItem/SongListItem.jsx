@@ -8,15 +8,18 @@ class SongListItem extends Component {
     return (
       <div className="songItem">
 
-        <p className="songName">Track: {this.props.name}</p>
-        <p className="songAlbum">Album: {this.props.album}</p>
-        <p className="songArtist">Artist: {this.props.artist}</p>
+        <div className="getVideo"> &#9658;
+          {/*onClick={() => this.props.handleAbandonment(this.props.id)}*/}
+        </div>
 
-        <button
-          className="addToPlaylist"
-          // onClick={() => this.props.handleAbandonment(this.props.id)}
-          >Add to playlist
-        </button>
+        <div className="addSong">+
+          {/*onClick={() => this.props.handleAbandonment(this.props.id)}*/}
+        </div>
+
+        <p className="songName">{this.props.name}</p>
+        {/*<p className="songAlbum">Album: {this.props.album}</p>*/}
+        {/*<p className="songArtist">Artist: {this.props.artist}</p>*/}
+
 
       </div>
     );
