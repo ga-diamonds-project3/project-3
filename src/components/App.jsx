@@ -64,7 +64,7 @@ class App extends Component {
     });
     console.log('state', this.state.albumSelected);
     // if (this.state.albumSelected !== '') {
-      setTimeout(()=>{this.getSongs()}, 500);
+      setTimeout(()=>{this.getSongs()}, 0);
     // }
   }
 
