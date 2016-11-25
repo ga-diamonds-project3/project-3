@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import style from './AlbumList.css';
 import AlbumListItem from '../AlbumListItem/AlbumListItem.jsx';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 
 export default class AlbumList extends Component {
 
@@ -32,7 +34,9 @@ export default class AlbumList extends Component {
     return(
       // itunes album list contnainer
       <div className="albums-container">
+    <ReactCSSTransitionGroup transitionName="album" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
         {this.renderAlbums()}
+   </ReactCSSTransitionGroup>
       </div>
     )
   }
