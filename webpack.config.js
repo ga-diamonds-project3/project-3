@@ -33,7 +33,6 @@ module.exports = {
       allChunks: true
     })
   ],
-
   module : {
     include: path.join(__dirname, 'src'),
     loaders: [

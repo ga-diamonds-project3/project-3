@@ -6,3 +6,11 @@
   overflow: auto;
   padding: 1vh 1vw;
 }
+/*fade in transition*/
+.fade-enter {
+ transform: translate(-60%);
+}
+.fade-enter.fade-enter-active {
+  transform: translate(1%);
+  transition: transform 1000ms ease-in-out;
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SongListItem from '../SongListItem/SongListItem.jsx';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import style from './SongList.css';
 
 class SongList extends Component {
@@ -23,9 +24,12 @@ class SongList extends Component {
 
   render(){
     // console.log(this.props);
+    // Add react transition animation to the list
     return (
       <article className="song-container">
+       <ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={1000} transitionLeaveTimeout={1000}>
         {this.renderSongList()}
+      </ReactCSSTransitionGroup>
       </article>
     );
   }
