@@ -6,52 +6,48 @@
   padding: 1vh 1vw;
   /*color: #FFFFFF;*/
   width: 30vw;
-  height: 8vh;
+  min-height: 8vh;
   box-shadow: 5px 5px 5px #888888;
 }
 
 .getVideo {
-  margin-right: 1vw;
+  margin-right: .5vw;
   float: left;
   display: inline-block;
   text-align: center;
   margin-top: 1vh;
-  /*border: 1px solid #206FF9;*/
-  /*border-radius: 25px;*/
-  height: 30px;
-  width: 30px;
-  /*background-color: #FFFFFF;*/
+  height: 4vh;
+  width: 2vw;
   color: #206FF9;
-  font-size: 20px;
-  /*padding-bottom: 1vh;*/
+  font-size: 1.5vw;
 }
 
 .getVideo:hover {
   cursor: pointer;
+  color: #79a8fb;
 }
 
 .addSong {
-  margin-right: 1vw;
+  margin-right: .5vw;
   float: left;
   display: inline-block;
   text-align: center;
-  /*border: 1px solid black;*/
-  /*border-radius: 25px;*/
-  height: 30px;
-  width: 30px;
-  /*background-color: transparent;*/
+  margin-top: .2vh;
+  height: 4vh;
+  width: 2vw;
   color: #206FF9;
-  font-size: 25px;
-  /*padding-bottom: 1vh;*/
+  font-size: 2vw;
 }
 
 .addSong:hover {
   cursor: pointer;
+  color: #79a8fb;
 }
 
 .songName {
  display: inline-block;
- font-size: 80%;
- margin: 1vh 0 0 1vw;
+ width: 20vw;
+ font-size: 1vw;
+ margin: 1.5vh 0 0 .5vw;
 }
 
