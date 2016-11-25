@@ -6,6 +6,7 @@
   overflow: auto;
   padding: 1vh 1vw;
 }
+/*fade in transition*/
 .fade-enter {
  transform: translate(-60%);
 }

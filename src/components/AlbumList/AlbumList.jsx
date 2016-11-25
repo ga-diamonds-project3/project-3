@@ -31,6 +31,7 @@ export default class AlbumList extends Component {
   render() {
     return(
       // itunes album list contnainer
+      // Add react transition animation to the list
       <div className="albums-container">
       <ReactCSSTransitionGroup transitionName="album" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
         {this.renderAlbums()}

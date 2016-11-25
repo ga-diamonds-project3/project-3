@@ -9,6 +9,7 @@
 .albums-item {
   display: inline-block;
 }
+/*add-item transition*/
 .album-enter {
     animation-name: add-item;
     animation-duration: 500ms;
