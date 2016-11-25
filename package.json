@@ -32,7 +32,9 @@
     "passport": "^0.3.2",
     "passport-google-oauth": "^1.0.0",
     "path": "^0.12.7",
-    "pg-promise": "^5.2.7"
+    "pg-promise": "^5.2.7",
+    "react-addons-css-transition-group": "^15.4.1",
+    "react-native-animatable": "^1.0.0"
   },
   "devDependencies": {
     "babel": "^6.5.2",
