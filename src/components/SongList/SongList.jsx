@@ -14,6 +14,8 @@ class SongList extends Component {
         name={song.trackName}
         album={song.collectionName}
         artist={song.artistName}
+        preview={song.previewUrl}
+        changeSongSelected={()=>this.props.changeSongSelected(i)}
         key={i}
       />
     );
