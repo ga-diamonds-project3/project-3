@@ -27,11 +27,7 @@ class SongList extends Component {
     // Add react transition animation to the list
     return (
       <article className="song-container">
-<<<<<<< HEAD
       <ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={1000} transitionLeaveTimeout={1000}>
-=======
-       <ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={1000} transitionLeaveTimeout={1000}>
->>>>>>> 2f50f5c9fc2f81b052b11e2cdb5e9f23cd18dac2
         {this.renderSongList()}
       </ReactCSSTransitionGroup>
       </article>
