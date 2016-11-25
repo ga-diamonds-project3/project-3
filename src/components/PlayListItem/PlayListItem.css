@@ -6,31 +6,30 @@
   padding: 1vh 1vw;
   /*color: #FFFFFF;*/
   width: 30vw;
-  height: 8vh;
+  min-height: 8vh;
   box-shadow: 5px 5px 5px #888888;
 }
 
 .deleteSong {
-  margin-right: 1vw;
+  margin-right: .5vw;
+  margin-bottom: 1vh;
   float: left;
   display: inline-block;
   text-align: center;
-  /*border: 1px solid black;
-  /*border-radius: 25px;*/
-  height: 30px;
-  width: 30px;
-  /*background-color: transparent;*/
+  height: 4vh;
+  width: 2vw;
   color: #206FF9;
-  font-size: 25px;
-  /*padding-bottom: 1vh;*/
+  font-size: 2vw;
 }
 
 .deleteSong:hover {
   cursor: pointer;
+  color: #79a8fb;
 }
 
 .favItem p {
-  font-size: 13px;
-  margin-left: 1vw;
+  font-size: 1vw;
+  margin-left: .5vw;
+  width: 20vw;
 }
 

@@ -10,16 +10,23 @@
 
 .album-img {
   display: block;
-  width: 150px;
-  height: 150px;
+  width: 11.5vw;
+  height: 20vh;
   background-color: grey;
   border: 1px solid #DADADA;
   border-radius: 5px;
-  /*margin-top: 2vh;*/
-  /*margin-left: 2vw;*/
 }
 
 .albumInfo {
   display: block;
+}
 
+.alb {
+  color: #404040;
+  font-size: .8vw;
+}
+
+.art {
+  color: #9A9AA2;
+  font-size: .8vw;
 }
