@@ -1,7 +1,36 @@
 .favItem {
-  border-bottom: 1px solid green;
+  background-color: #F8F8FA;
+  border: 2px solid #E0DFE0;
+  border-radius: 10px;
+  margin-bottom: 1vh;
   padding: 1vh 1vw;
-  width: 32vw;
-  height: 15vh;
+  /*color: #FFFFFF;*/
+  width: 30vw;
+  height: 8vh;
+  box-shadow: 5px 5px 5px #888888;
+}
+
+.deleteSong {
+  margin-right: 1vw;
+  float: left;
+  display: inline-block;
+  text-align: center;
+  /*border: 1px solid black;
+  /*border-radius: 25px;*/
+  height: 30px;
+  width: 30px;
+  /*background-color: transparent;*/
+  color: #206FF9;
+  font-size: 25px;
+  /*padding-bottom: 1vh;*/
+}
+
+.deleteSong:hover {
+  cursor: pointer;
+}
+
+.favItem p {
+  font-size: 13px;
+  margin-left: 1vw;
 }
 
