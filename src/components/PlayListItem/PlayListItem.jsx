@@ -14,7 +14,7 @@ class PlayListItem extends Component {
         </a>
          <div className="deleteSong"
           // onClick={this.props.changeSongSelected}
-        >X
+        >&#215;
         </div>
 
         <p className="favTrack">{this.props.name}</p>
