@@ -11,9 +11,9 @@ export default class SearchForm extends Component {
     return(
       <div className="search-form">
       <form onSubmit={this.props.handleClick}>
-        <input 
-          type="text" 
-          placeholder="Artist" 
+        <input
+          type="text"
+          placeholder="Artist"
           onChange={event => this.props.handleInputChange(event)}
         />
         <button >Search</button>

@@ -21,7 +21,7 @@ class App extends Component {
       albumList     : [],
       playlist      : [],
       songList      : [],
-
+      musicVideo    : [],
     };
   }
 
@@ -69,7 +69,6 @@ class App extends Component {
   }
 
 
-
   // get a list of songs by specific album
   getSongs() {
     console.log('HIT')
@@ -83,6 +82,20 @@ class App extends Component {
       console.log(this.state.songList)
     })
     .catch(err => console.log('getsongs error', err));
+  }
+
+  getMusicVideo(a, b) {
+    console.log('YouTube')
+    // assuming that album is updated to state by click handler
+    fetch(`/api/youtube/${this.state.artistSongs}`)
+    .then(r => r.json())
+    .then(data => {
+      this.setState({
+        musicVideo: data.items[0],
+      });
+      console.log(this.state.musicvideo)
+    })
+    .catch(err => console.log('musicvideo error', err));
   }
 
   // function that will hit our database API and set an array of data to the playlist state
@@ -150,7 +163,9 @@ class App extends Component {
 
             {/* SONG LIST COMPONENT GOES HERE (<SongList />)*/}
             <SongList
+              getMusicVideo={this.getMusicVideo.bind(this)}
               songList={this.state.songList}
+              musicvideo={this.state.musicVideo}
             />
 
           {/* PLAYLIST COMPONENT GOES HERE (<PlayList />)*/}
