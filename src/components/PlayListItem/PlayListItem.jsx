@@ -7,16 +7,19 @@ class PlayListItem extends Component {
   render(){
     return (
       <div className="favItem">
+        <a target="_blank" href={this.props.preview}>
+          <div className="getVideo"> &#9658;
+            {/*onClick={() => this.props.handleAbandonment(this.props.id)}*/}
+          </div>
+        </a>
+         <div className="deleteSong"
+          // onClick={this.props.changeSongSelected}
+        >&#215;
+        </div>
 
-        <p className="favName">Track: {this.props.name}</p>
-        <p className="favAlbum">Album: {this.props.album}</p>
-        <p className="favArtist">Artist: {this.props.artist}</p>
-
-        <button
-          className="favDelete"
-          // onClick={() => this.props.handleAbandonment(this.props.id)}
-          >Delete Song
-        </button>
+        <p className="favTrack">{this.props.name}</p>
+        <p className="favAlbum">{this.props.album}</p>
+        <p className="favArtist">by: {this.props.artist}</p>
 
       </div>
     );

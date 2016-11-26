@@ -1,7 +1,35 @@
 .albums-container {
   display: inline-block;
-  border: 1px solid blue;
-  height: 85vh;
+  /*border: 1px solid green;*/
+  height: 88vh;
   width: 32vw;
   overflow: auto;
+}
+
+.albums-item {
+  display: inline-block;
+}
+
+
+
+/*add-item transition*/
+.album-enter {
+    animation-name: add-item;
+    animation-duration: 500ms;
+}
+
+.album-leave {
+    animation-name: remove-item;
+    animation-duration: 520ms;
+}
+@keyframes add-item {
+  from {
+    transform: scale(0, 0);
+  }
+  75% {
+    transform: scale(1.1, 1.1);
+  }
+  to {
+    transform: scale(1, 1);
+  }
 }

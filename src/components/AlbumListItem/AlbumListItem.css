@@ -1,20 +1,32 @@
 .albumItem  {
-  border-bottom: 1px solid green;
-  padding: 1vh 1vw;
-  width: 32vw;
-  height: 15vh;
+  /*border: 1px solid black;*/
+  width: 15.7vw;
+  height: 30vh;
+  /*display: flex;*/
+  font-size: 10px;
+  padding: 2vh 2vw;
+  box-shadow: 5px 5px 5px #888888;
 }
 
 .album-img {
-  display: inline-block;
-  height: 10vh;
-  width: 7vw;
+  display: block;
+  width: 11.5vw;
+  height: 20vh;
   background-color: grey;
-  border: 1px solid black;
+  border: 1px solid #DADADA;
+  border-radius: 5px;
 }
 
-.album-info {
-  display: inline-block;
-  /*height: 10vh;
-  width: 10vw;*/
+.albumInfo {
+  display: block;
+}
+
+.alb {
+  color: #404040;
+  font-size: .8vw;
+}
+
+.art {
+  color: #9A9AA2;
+  font-size: .8vw;
 }

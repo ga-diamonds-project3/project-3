@@ -2,29 +2,87 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 header {
- border: 1px solid blue;
+ /*border: 1px solid blue;*/
+ background-color: #D6D6D6;
+ border-bottom: 1px solid #9E9E9E;
  text-align: center;
 }
 
+header h1 {
+  margin: 0;
+}
+
+#hamburger-button {
+  position: absolute;
+  top: 3vh;
+  left: 95vw;
+  /*display: inline-block;*/
+  /*vertical-align: top;*/
+  float: right;
+  height: 15px;
+  width: 20px;
+}
+
+#hamburger-button:hover {
+  cursor: pointer;
+}
+
+#hamburger-button > span {
+  display: block;
+  height: 3px;
+  margin-bottom: 3px;
+  width: 20px;
+  background-color: black;
+}
+
+main {
+  /*display: none;*/
+  background-color: #FFFFFF;
+  position: absolute;
+  left: 0;
+  height: 95vh;
+  width: 100vw;
+  box-shadow: 6px 5px 10px #888888;
+  /*border:3px solid purple;*/
+  transition: all 0.5s ease;
+}
+
+main.open {
+  width: 69.5vw;
+}
+
 .titles {
-  border: 1px solid blue;
-  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  /*align-items: center;*/
+  /*border: 1px solid blue;*/
+  /*text-align: center;*/
 }
 
 .titles h2 {
-  display: inline-block;
+  color: #206FF9;
 }
 
-.center-title {
-  margin: 1vh 25vw 1vh 25vw;
-}
 
-section {
-  border: 1px solid red;
+.main-content {
+  /*border: 1px solid red;*/
   display: flex;
-  justify-content: center;
+  justify-content: space-around
 }
 
+aside {
+  background-color: #F4F4F4;
+  float: right;
+  width: 30vw;
+  /*border: 1px solid yellow;*/
+}
+
+.playlist {
+  /*background-color: #F4F4F4;*/
+  /*border: 1px solid purple;*/
+  text-align: center;
+}

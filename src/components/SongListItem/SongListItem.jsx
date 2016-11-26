@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import style from './SongListItem.css';
 
-
 const handleSubmit = (event) => {
   event.preventDefault();
 
@@ -13,10 +12,7 @@ const handleSubmit = (event) => {
   };
 
 class SongListItem extends Component {
-
   render(){
-    console.log(this.props.artist)
-    console.log(this.props.name)
     return (
       <div className="songItem">
         <p className="songName">Track: {this.props.name}</p>
@@ -38,9 +34,7 @@ class SongListItem extends Component {
                name="name"
               value={this.props.name}
               />
-            <button
-              onClick={this.props.getMusicVideo()}
-            >Play Song</button>
+            <button>Play Song</button>
           </form>
       </div>
     );

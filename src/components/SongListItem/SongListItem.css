@@ -1,7 +1,53 @@
 .songItem {
-  border-bottom: 1px solid green;
+  background-color: #F8F8FA;
+  border: 2px solid #E0DFE0;
+  border-radius: 10px;
+  margin-bottom: 1vh;
   padding: 1vh 1vw;
-  width: 32vw;
-  height: 15vh;
+  /*color: #FFFFFF;*/
+  width: 30vw;
+  min-height: 8vh;
+  box-shadow: 5px 5px 5px #888888;
+}
+
+.getVideo {
+  margin-right: .5vw;
+  float: left;
+  display: inline-block;
+  text-align: center;
+  margin-top: 1vh;
+  height: 4vh;
+  width: 2vw;
+  color: #206FF9;
+  font-size: 1.5vw;
+}
+
+.getVideo:hover {
+  cursor: pointer;
+  color: #79a8fb;
+}
+
+.addSong {
+  margin-right: .5vw;
+  float: left;
+  display: inline-block;
+  text-align: center;
+  margin-top: .2vh;
+  height: 4vh;
+  width: 2vw;
+  color: #206FF9;
+  font-size: 2vw;
+}
+
+.addSong:hover {
+  cursor: pointer;
+  color: #79a8fb;
+}
+
+.songName {
+ display: inline-block;
+ width: 20vw;
+ font-size: 1vw;
+ margin: 1.5vh 0 0 .5vw;
 }
 
