@@ -201,7 +201,7 @@ class App extends Component {
   removeFromPlaylist(e) {
     // console.log('removeFromPlaylist', e.target.getAttribute('data-trackid'))
     const trackid = e.target.getAttribute('data-trackid');
-    console.log(trackid)    
+    console.log(trackid)
     fetch(`/playlist/${trackid}`, { method : 'DELETE' })
     .then(this.getPlayList())
     .catch(err => console.log('removeFromPlaylist error', err));
@@ -220,7 +220,6 @@ class App extends Component {
           <div
             id="hamburger-button"
             onClick={() => {
-                      console.log('shits clicked');
                       document.querySelector('#content-wrapper').classList.toggle('open');
                     }}
           >
