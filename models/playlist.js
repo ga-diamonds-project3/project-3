@@ -2,7 +2,7 @@ const db = require('../db/db');
 
 // get all playlist (get)
 function getPlaylist(req, res, next) {
-  console.log('getting playlist ** server');
+  // console.log('getting playlist ** server');
   db.any(`SELECT *
           FROM playlist
           WHERE user_id = $1;`,
@@ -15,18 +15,19 @@ function getPlaylist(req, res, next) {
   .catch(err => next(err));
 }
 
-// // save to playlist (post)
-// function saveOneSongToPlaylist(req, res, next) {
-//   db.none(`INSERT INTO playlist (trackid, trackname, artistname, collectionid, user_id)
-//            VALUES ($1, $2, $3, $4, $5)`,
-//           [/* either req.body or req.params */])
-//   .then(results => {
-//     // returns nothing
-//     res.results = results;
-//     next();
-//   })
-//   .catch(err => next(err));
-// }
+// save to playlist (post)
+function saveOneSongToPlaylist(req, res, next) {
+  console.log('req.body: ', req.body)
+  db.none(`INSERT INTO playlist (trackid, trackname, artistid, artistname, collectionid, collectionname, youtube, user_id)
+           VALUES ($/trackid/, $/trackname/, $/artistid/, $/artistname/, $/collectionid/, $/collectionname/, $/youtube/, $/user_id/);`,
+          req.body)
+  .then(results => {
+    // returns nothing
+    res.results = results;
+    next();
+  })
+  .catch(err => next(err));
+}
 
 // // delete a song in the playlist(delete)
 // function deleteOneSongFromPlaylist(req, res, next) {
@@ -43,6 +44,6 @@ function getPlaylist(req, res, next) {
 
 module.exports = {
   getPlaylist,
-  // saveOneSongToPlaylist,
+  saveOneSongToPlaylist,
   // deleteOneSongFromPlaylist,
 };

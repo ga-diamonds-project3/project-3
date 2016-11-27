@@ -16,6 +16,7 @@ CREATE TABLE playlist(
   artistname TEXT NOT NULL,
   collectionid INT NOT NULL,
   collectionname TEXT NOT NULL,
+  youtube TEXT,
   user_id INT NOT NULL
 );
 
