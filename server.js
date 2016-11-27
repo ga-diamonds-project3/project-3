@@ -7,6 +7,16 @@ const bodyParser = require('body-parser');
 const app        = express();
 const PORT       = process.argv[2] || process.env.port || 3000;
 
+// socket.io
+const http       = require('http').Server(app);
+const io         = require('socket.io')(http);
+
+io.on('connection', socket => {
+  console.log('a user connected');
+});
+
+http.listen(PORT, () => console.log('listening on', PORT));
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 
@@ -21,4 +31,4 @@ app.use((err, req, res, next) => {
   res.status(500).send('Something broke').end(next);
 });
 
-app.listen(PORT, () => console.log('server here! listening on', PORT));
+// app.listen(PORT, () => console.log('server here! listening on', PORT));

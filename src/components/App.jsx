@@ -8,6 +8,8 @@ import SearchForm from './SearchForm/SearchForm.jsx';
 import './normalize.css';
 import style from './App.css';
 
+import io from 'socket.io-client';
+
 // create a React Component called _App_
 class App extends Component {
   constructor() {
@@ -25,9 +27,22 @@ class App extends Component {
       songForDB     : [],
     };
   }
+
+
+  socketFn() {
+    const socket = io();
+    socket.on('connection', socket => {
+      console.log('a user connected yo');
+
+      socket.on('disconnect', msg => console.log('disconnected'))
+    })
+  }
+
+
   // // check for playlist update before rendering
   componentWillMount() {
     this.getPlayList();
+    this.socketFn();
   }
   // udpate searchArtist state on every change at input search
   handleInputChange(e) {
