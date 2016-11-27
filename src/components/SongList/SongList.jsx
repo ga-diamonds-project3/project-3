@@ -10,7 +10,7 @@ class SongList extends Component {
 
   renderSongList() {
     return this.props.songList.map((song, i) =>
-      <div>
+
         <SongListItem
           // handleLikePuppy={this.props.handleLikePuppy}
           // handleAbandonment={this.props.handleAbandonment}
@@ -19,12 +19,9 @@ class SongList extends Component {
           artist={song.artistName}
           preview={song.previewUrl}
           changeSongSelected={()=>this.props.changeSongSelected(i)}
+          getMusicVideo={()=>this.props.getMusicVideo.bind(song)}
           key={i}
         />
-        <MusicVideo
-            musicVideo={this.props.musicVideo}
-          />
-      </div>
     );
   }
 
@@ -32,12 +29,16 @@ class SongList extends Component {
     // console.log(this.props);
     // Add react transition animation to the list
     return (
-
+    <div>
       <article className="song-container">
        <ReactCSSTransitionGroup transitionName="fade" transitionEnterTimeout={1000} transitionLeaveTimeout={1000}>
         {this.renderSongList()}
       </ReactCSSTransitionGroup>
       </article>
+      <MusicVideo
+        musicVideo={this.props.musicVideo}
+      />
+    </div>
 
     );
   }

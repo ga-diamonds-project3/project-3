@@ -95,7 +95,7 @@ class App extends Component {
     .then(r => r.json())
     .then(data => {
       this.setState({
-        musicVideo: data.items[0],
+        musicVideo: data,
       });
       console.log(this.state.musicvideo)
     })
