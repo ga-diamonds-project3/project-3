@@ -74,17 +74,21 @@
 }
 
 .close {
-    color: #aaaaaa;
+    color: #000000;
     float: right;
-    margin-right: 20px;
-    font-size: 35px;
+    margin-right: 2vw;
+    font-size: 3vw;
     font-weight: bold;
 }
 
 .close:hover {
-    color: #000;
-    text-decoration: none;
+    color: #206FF9;
     cursor: pointer;
+}
+
+.placeholder-text {
+  margin: 30vh 0 0 17vw;
+  font-size: 3vw;
 }
 
 

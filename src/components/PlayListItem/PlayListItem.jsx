@@ -8,11 +8,13 @@ class PlayListItem extends Component {
     return (
       <div className="favItem">
         <a target="_blank" href={this.props.preview}>
-          <div className="getVideo"> &#9658;
-            {/*onClick={() => this.props.handleAbandonment(this.props.id)}*/}
+          <div
+            className="getVideo"
+            onClick={()=>{document.querySelector('.modal').style.display = "block"}}
+          >&#9658;
           </div>
         </a>
-         <div className="deleteSong" 
+         <div className="deleteSong"
            data-trackid={this.props.trackid}
           // onClick={this.props.changeSongSelected}
           onClick={this.props.handleDelete}

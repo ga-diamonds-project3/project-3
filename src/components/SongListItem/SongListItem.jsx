@@ -30,6 +30,7 @@ class SongListItem extends Component {
             className="close"
             onClick={()=>{document.querySelector('.modal').style.display = "none"}}
           >×</span>
+          <h4 className="placeholder-text">YOUTUBE VIDEO GOES HERE </h4>
           </div>
         </div>
       </div>
