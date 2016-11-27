@@ -26,9 +26,9 @@ class App extends Component {
     };
   }
   // // check for playlist update before rendering
-  // componentWillMount() {
-  //   this.getPlayList();
-  // }
+  componentWillMount() {
+    this.getPlayList();
+  }
   // udpate searchArtist state on every change at input search
   handleInputChange(e) {
     // console.log('input value:', e);
@@ -182,8 +182,15 @@ class App extends Component {
 //   $button = document.querySelector('#hamburger-button');
 //   $button.addEventListener('click', slideMenu)
 // }
-
-
+  // remove song from playlist using trackid
+  removeFromPlaylist(e) {
+    // console.log('removeFromPlaylist', e.target.getAttribute('data-trackid'))
+    const trackid = e.target.getAttribute('data-trackid');
+    console.log(trackid)    
+    fetch(`/playlist/${trackid}`, { method : 'DELETE' })
+    .then(this.getPlayList())
+    .catch(err => console.log('removeFromPlaylist error', err));
+  }
 
   render(){
     return (
@@ -238,6 +245,7 @@ class App extends Component {
           <PlayList
             getPlayList={this.getPlayList.bind(this)}
             playlist={this.state.playlist}
+            removeFromPlaylist={this.removeFromPlaylist.bind(this)}
             // handleDelete={this.handleDelete.bind(this)}
            />
         </aside>

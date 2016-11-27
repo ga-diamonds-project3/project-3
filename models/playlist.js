@@ -29,21 +29,24 @@ function saveOneSongToPlaylist(req, res, next) {
   .catch(err => next(err));
 }
 
-// // delete a song in the playlist(delete)
-// function deleteOneSongFromPlaylist(req, res, next) {
-//   db.result(`DELETE FROM playlist
-//              WHERE user_id = $1 AND trackid = $2`,
-//              [/* req.body or req.params */] )
-//   .then(results => {
-//     // returns null
-//     res.results = results;
-//     next();
-//   })
-//   .catch(err => next(err);
-// }
+// delete a song in the playlist(delete)
+function deleteOneSongFromPlaylist(req, res, next) {
+  console.log('HIT ***')
+  // db.result(`DELETE FROM playlist
+  //            WHERE user_id = $1 AND trackid = $2`,
+  db.result(`DELETE FROM playlist
+             WHERE trackid = $1`,
+             [req.params.trackid] )
+  .then(results => {
+    // returns null
+    res.results = results;
+    next();
+  })
+  .catch(err => next(err));
+}
 
 module.exports = {
   getPlaylist,
   saveOneSongToPlaylist,
-  // deleteOneSongFromPlaylist,
+  deleteOneSongFromPlaylist,
 };

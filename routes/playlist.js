@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { getPlaylist, saveOneSongToPlaylist } = require('../models/playlist.js');
+const { getPlaylist, saveOneSongToPlaylist, deleteOneSongFromPlaylist } = require('../models/playlist.js');
 
 // get all playlist from specific user
 router.get('/:userid', getPlaylist, (req, res) => {
@@ -13,8 +13,8 @@ router.post('/', saveOneSongToPlaylist, (req, res) => {
 });
 // remove one song from the user's playlist
 /* need user_id and trackid to delete */
-router.delete('/:trackid', (req, res) => {
-  res.send('DELETE method');
+router.delete('/:trackid', deleteOneSongFromPlaylist, (req, res) => {
+  res.json(res.results);
 });
 
 module.exports = router;
