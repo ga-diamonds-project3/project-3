@@ -12,8 +12,10 @@ class PlayListItem extends Component {
             {/*onClick={() => this.props.handleAbandonment(this.props.id)}*/}
           </div>
         </a>
-         <div className="deleteSong"
+         <div className="deleteSong" 
+           data-trackid={this.props.trackid}
           // onClick={this.props.changeSongSelected}
+          onClick={this.props.handleDelete}
         >&#215;
         </div>
 
