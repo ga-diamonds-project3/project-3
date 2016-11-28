@@ -10,6 +10,7 @@ header {
  background-color: #D6D6D6;
  border-bottom: 1px solid #9E9E9E;
  text-align: center;
+ height: 10vh;
 }
 
 header h1 {
@@ -44,7 +45,7 @@ main {
   background-color: #FFFFFF;
   position: absolute;
   left: 0;
-  height: 65vh;
+  height: 85vh;
   /*height: 95vh;*/
   width: 100vw;
   box-shadow: 6px 5px 10px #888888;
@@ -78,6 +79,7 @@ main.open {
 aside {
   background-color: #F4F4F4;
   float: right;
+  height: 85vh;
   width: 30vw;
   /*border: 1px solid yellow;*/
 }
@@ -88,8 +90,18 @@ aside {
   text-align: center;
 }
 
-
 footer {
-  height: 20vh;
-  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  /*display: block;*/
+  background-color: #D6D6D6;
+  height: 5vh;
+  width: 100vw;
+}
+
+#open-chat {
+  background-color: black;
+  width: 100px;
+  height: 50px;
 }

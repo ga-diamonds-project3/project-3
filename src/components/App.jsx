@@ -191,6 +191,7 @@ class App extends Component {
           </section>
 
         </main>
+
         <aside className="pop-out">
         {/* PLAYLIST COMPONENT GOES HERE (<PlayList />)*/}
           <div className="playlist">
@@ -203,8 +204,18 @@ class App extends Component {
            />
         </aside>
 
-        <footer >
+        <div className="socket-container">
           <Socket />
+        </div>
+
+        <footer>
+        <div
+            id="open-chat"
+            onClick={() => {
+                      document.querySelector('.message-box').style.display='block';
+                    }}
+          >
+          </div>
         </footer>
       </div>
     );
