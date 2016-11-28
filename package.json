@@ -30,6 +30,7 @@
     "node-fetch": "^1.6.3",
     "pg-promise": "^5.2.7",
     "react-addons-css-transition-group": "^15.4.1",
+    "socket.io": "^1.7.1",
     "socket.io-client": "^1.6.0"
   },
   "devDependencies": {

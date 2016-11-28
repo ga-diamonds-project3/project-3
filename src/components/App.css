@@ -86,3 +86,9 @@ aside {
   /*border: 1px solid purple;*/
   text-align: center;
 }
+
+footer {
+  position: absolute;
+  height: 200px;
+  width: 100%;
+}
