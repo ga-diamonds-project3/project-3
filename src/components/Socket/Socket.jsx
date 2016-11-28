@@ -34,17 +34,11 @@ export default class Socket extends Component {
     e.preventDefault();
 
     const i = document.getElementById('m');
-    // li.innerHTML = i.value;
-    // ul.appendChild(li);
+    // send msg to server
     socket.emit('chat', i.value);
     i.value = '';
-    // console.log('about to setup= socket')
     socket.on('chat', msg => {
       console.log('chat', msg);
-      // const ul = document.getElementById('messages');
-      // const li = document.createElement('li');
-      // li.innerHTML = msg;
-      // ul.appendChild(li);
     });
   }
 
