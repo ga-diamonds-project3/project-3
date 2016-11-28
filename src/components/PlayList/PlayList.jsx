@@ -21,6 +21,8 @@ class PlayList extends Component {
         artist={song.artistname}
         trackid={song.trackid}
         handleDelete={this.props.removeFromPlaylist}
+        getMusicVideo={this.props.getMusicVideo}
+        videoId={this.props.videoId}
       />
     );
   }
