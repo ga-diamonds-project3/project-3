@@ -3,8 +3,8 @@ import YouTube from 'react-youtube'
 import './MusicVideoItems.css'
 
 const opts = {
-  height: '100',
-  width: '200',
+  height: '350',
+  width: '580',
 }
 
 const MusicVideoItems = props => (

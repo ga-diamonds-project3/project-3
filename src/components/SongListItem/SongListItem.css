@@ -51,3 +51,44 @@
  margin: 1.5vh 0 0 .5vw;
 }
 
+.modal {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba( 0, 0, 0, .6);
+}
+
+.modal-content {
+  position: absolute;
+  left: 10vw;
+  top: 15vh;
+  background-color: #FAFAFA;
+  width: 80vw;
+  height: 40vw;
+  border: 1px solid #9C9C9C;
+  border-radius: 1.5vw;
+  /*box-shadow: 5px 4px 10px #888888;*/
+}
+
+.close {
+    color: #000000;
+    float: right;
+    margin-right: 2vw;
+    font-size: 3vw;
+    font-weight: bold;
+}
+
+.close:hover {
+    color: #206FF9;
+    cursor: pointer;
+}
+
+.placeholder-text {
+  margin: 30vh 0 0 17vw;
+  font-size: 3vw;
+}
+
+

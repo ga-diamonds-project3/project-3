@@ -3,10 +3,10 @@ import MusicVideoItems from '../MusicVideoItems/MusicVideoItems.jsx';
 import './MusicVideo.css';
 
 const MusicVideo = props => {
-  if (props.searchTerm) {
+  if (props.songList) {
     return (
       <MusicVideoItems
-        videoId={this.props.muvies.id.videoId}
+        videoId={this.props.musicVideo.id.videoId}
       />
     );
   } else {

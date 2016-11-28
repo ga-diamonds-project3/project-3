@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import SongListItem from '../SongListItem/SongListItem.jsx';
-import MusicVideo from '../MusicVideo/MusicVideo.jsx';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import style from './SongList.css';
 
@@ -19,7 +18,8 @@ class SongList extends Component {
           artist={song.artistName}
           preview={song.previewUrl}
           changeSongSelected={()=>this.props.changeSongSelected(i)}
-          getMusicVideo={()=>this.props.getMusicVideo.bind(song)}
+          getMusicVideo={()=>this.props.getMusicVideo(song.artistName, song.trackName)}
+          musicVideo={this.props.musicVideo}
           key={i}
         />
     );
@@ -35,9 +35,6 @@ class SongList extends Component {
         {this.renderSongList()}
       </ReactCSSTransitionGroup>
       </article>
-      <MusicVideo
-        musicVideo={this.props.musicVideo}
-      />
     </div>
 
     );

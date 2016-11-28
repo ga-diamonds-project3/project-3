@@ -26,7 +26,10 @@ class App extends Component {
       songForDB     : [],
     };
   }
-
+  // // check for playlist update before rendering
+  componentWillMount() {
+    this.getPlayList();
+  }
   // udpate searchArtist state on every change at input search
   handleInputChange(e) {
     // console.log('input value:', e);
@@ -87,17 +90,16 @@ class App extends Component {
     .catch(err => console.log('getsongs error', err));
   }
 
-
   getMusicVideo(a, b) {
-    console.log('YouTube')
     // assuming that album is updated to state by click handler
-    fetch(`/api/youtube/${this.state.artistSongs}`)
+    fetch(`/api/youtube/${a}-${b}`)
     .then(r => r.json())
     .then(data => {
       this.setState({
-        musicVideo: data,
+        musicVideo: data.items[0],
+        musicCounter: [1],
       });
-      console.log(this.state.musicvideo)
+      console.log(this.state.musicVideo)
     })
     .catch(err => console.log('musicvideo error', err));
   }
@@ -125,19 +127,39 @@ class App extends Component {
       this.setState({
         songForDB: filterSongs,
       });
-      console.log('song selected', this.state.songForDB)
+      console.log('song selected', this.state.songForDB[0]);
+      const songInfo = {
+        trackid        : this.state.songForDB[0].trackId,
+        trackname      : this.state.songForDB[0].trackName,
+        artistid       : this.state.songForDB[0].artistId,
+        artistname     : this.state.songForDB[0].artistName,
+        collectionid   : this.state.songForDB[0].collectionId,
+        collectionname : this.state.songForDB[0].collectionName,
+        youtube        : this.state.songForDB[0].previewUrl,
+        user_id        : 1,
+      };
+      this.addToPlaylist(songInfo);
     })
     .catch(err => console.log('getSong error', err));
   }
-
-
+  // save a specified song to the user's playlist
+  // payload    song info to add
+  addToPlaylist(payload) {
+    console.log('in addToPlaylist', payload)
+    fetch(`/playlist`, {
+      headers : { 'Content-Type' : 'application/json' },
+      method  : 'POST',
+      body    : JSON.stringify(payload),
+    })
+    .then(this.getPlayList())
+    .catch(err => console.log('addToPlaylist error', err));
+  }
   // function that will hit our database API and set an array of data to the playlist state
   getPlayList() {
     fetch('/playlist/1')
     .then(r => r.json())
     .then((songs) => {
       this.setState({
-
         playlist: songs
       });
     })
@@ -157,15 +179,6 @@ class App extends Component {
   //   .catch(err => console.log(err));
   // }
 
-  // handleYoutubeFetch () {
-  //   fetch(`http://localhost:3000/api/youtube`)
-  //   .then(r => r.json())
-  //   .then((video) => {
-  //     // Data pulled from Api, will be determined at a later time.
-  //   })
-  //   .catch(error) => console.log('You\'re looking at an Error: ', error)
-  // }
-
 // slideMenu = () => {
 //   console.log('shits clicked');
 //   $menuCont = document.querySelector('#content-wrapper');
@@ -176,8 +189,15 @@ class App extends Component {
 //   $button = document.querySelector('#hamburger-button');
 //   $button.addEventListener('click', slideMenu)
 // }
-
-
+  // remove song from playlist using trackid
+  removeFromPlaylist(e) {
+    // console.log('removeFromPlaylist', e.target.getAttribute('data-trackid'))
+    const trackid = e.target.getAttribute('data-trackid');
+    console.log(trackid)
+    fetch(`/playlist/${trackid}`, { method : 'DELETE' })
+    .then(this.getPlayList())
+    .catch(err => console.log('removeFromPlaylist error', err));
+  }
 
   render(){
     return (
@@ -192,7 +212,6 @@ class App extends Component {
           <div
             id="hamburger-button"
             onClick={() => {
-                      console.log('shits clicked');
                       document.querySelector('#content-wrapper').classList.toggle('open');
                     }}
           >
@@ -218,9 +237,9 @@ class App extends Component {
 
             {/* SONG LIST COMPONENT GOES HERE (<SongList />)*/}
             <SongList
-              getMusicVideo={this.getMusicVideo.bind(this)}
               songList={this.state.songList}
-              musicvideo={this.state.musicVideo}
+              musicVideo={this.state.musicVideo}
+              getMusicVideo={this.getMusicVideo.bind(this)}
               changeSongSelected={this.changeSongSelcted.bind(this)}
             />
           </section>
@@ -234,6 +253,7 @@ class App extends Component {
           <PlayList
             getPlayList={this.getPlayList.bind(this)}
             playlist={this.state.playlist}
+            removeFromPlaylist={this.removeFromPlaylist.bind(this)}
             // handleDelete={this.handleDelete.bind(this)}
            />
         </aside>

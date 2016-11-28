@@ -15,10 +15,12 @@ class PlayList extends Component {
       <PlayListItem
         // handleLikePuppy={this.props.handleLikePuppy}
         // handleAbandonment={this.props.handleAbandonment}
+        key={i}
         name={song.trackname}
         album={song.collectionname}
         artist={song.artistname}
-        key={i}
+        trackid={song.trackid}
+        handleDelete={this.props.removeFromPlaylist}
       />
     );
   }
