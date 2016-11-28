@@ -12,7 +12,7 @@ class SongListItem extends Component {
             className="getVideo"
             onClick={
               ()=>{
-                console.log(this.props.name),
+                console.log(this.props),
                 console.log(this.props.artist),
                 console.log(this.props.getMusicVideo(this.props.artist, this.props.name)),
                 // setTimeout(this.props.getMusicVideo(this.props.artist, this.props.name),0),
