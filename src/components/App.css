@@ -44,8 +44,8 @@ main {
   background-color: #FFFFFF;
   position: absolute;
   left: 0;
-  /*height: 65vh;*/
-  height: 95vh;
+  height: 65vh;
+  /*height: 95vh;*/
   width: 100vw;
   box-shadow: 6px 5px 10px #888888;
   /*border:3px solid purple;*/
