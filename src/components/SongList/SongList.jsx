@@ -11,14 +11,11 @@ class SongList extends Component {
     return this.props.songList.map((song, i) =>
 
         <SongListItem
-          // handleLikePuppy={this.props.handleLikePuppy}
-          // handleAbandonment={this.props.handleAbandonment}
           name={song.trackName}
           album={song.collectionName}
           artist={song.artistName}
           preview={song.previewUrl}
           changeSongSelected={()=>this.props.changeSongSelected(i)}
-          // getMusicVideo={()=>this.props.getMusicVideo(song.artistName, song.trackName)}
           getMusicVideo={this.props.getMusicVideo}
           videoId={this.props.videoId}
           key={i}

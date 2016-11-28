@@ -4,7 +4,7 @@ import './MusicVideo.css';
 
 const opts = {
   height: '100%',
-  width: '90%',
+  width: '100%',
 }
 
 const MusicVideo = props => (

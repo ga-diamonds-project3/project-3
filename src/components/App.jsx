@@ -78,7 +78,7 @@ class App extends Component {
 
   // get a list of songs by album id
   getSongs() {
-    console.log('HIT', this.state.albumSelected)
+    // console.log('HIT', this.state.albumSelected)
     // assuming that album is updated to state by click handler
     fetch(`/itunes/songs/${this.state.albumSelected}`)
     .then(r => r.json())
@@ -166,29 +166,6 @@ class App extends Component {
     .catch(err => console.log(err));
   }
 
-  // handleDelete(trackid) {
-  //   fetch(`/api/puppies/${id}`, {
-  //     method: 'DELETE'
-  //   })
-  //   .then(() => {
-  //     const playlist = this.state.playlist.filter((track) => {
-  //       return track.trackid !== trackid;
-  //     })
-  //     this.setState({ playlist: playlist })
-  //   })
-  //   .catch(err => console.log(err));
-  // }
-
-// slideMenu = () => {
-//   console.log('shits clicked');
-//   $menuCont = document.querySelector('#content-wrapper');
-//   $menuCont.classList.toggle('open');
-// };
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   $button = document.querySelector('#hamburger-button');
-//   $button.addEventListener('click', slideMenu)
-// }
   // remove song from playlist using trackid
   removeFromPlaylist(e) {
     // console.log('removeFromPlaylist', e.target.getAttribute('data-trackid'))
@@ -239,7 +216,6 @@ class App extends Component {
             <SongList
               songList={this.state.songList}
               musicVideo={this.state.musicVideo}
-              // getMusicVideo={event=>this.getMusicVideo(event)}
               getMusicVideo={this.getMusicVideo.bind(this)}
               changeSongSelected={this.changeSongSelcted.bind(this)}
               videoId={this.state.videoId}
