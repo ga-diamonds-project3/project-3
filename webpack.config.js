@@ -6,6 +6,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const BUILD_DIR         = path.resolve(__dirname, 'dist');
 const APP_DIR           = path.resolve(__dirname, 'src');
+// const PUBLIC_DIR        = path.resolve(__dirname, 'public');
 
 
 module.exports = {
@@ -27,7 +28,10 @@ module.exports = {
       xhtml: true,
       inject: false,
       template: require('html-webpack-template'),
-      appMountId: 'root-container'
+      appMountId: 'root-container',
+      scripts: [
+        "/socket.io/socket.io.js"
+      ]
     }),
     new ExtractTextPlugin('/css/[name].css', {
       allChunks: true
