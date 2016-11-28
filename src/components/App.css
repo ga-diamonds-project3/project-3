@@ -4,21 +4,23 @@
   box-sizing: border-box;
   overflow: hidden;
 }
-
 header {
  /*border: 1px solid blue;*/
+
  background-color: #D6D6D6;
  border-bottom: 1px solid #9E9E9E;
  text-align: center;
 }
-
-header h1 {
-  margin: 0;
+#input {
+  display: flex;
+  display-direction: row;
 }
-
+header h1 {
+  margin: 5px;
+}
 #hamburger-button {
   position: absolute;
-  top: 3vh;
+  top: 15vh;
   left: 95vw;
   /*display: inline-block;*/
   /*vertical-align: top;*/

@@ -1,9 +1,11 @@
-// import the libs we need
+ // import the libs we need
 import React, { Component } from 'react';
 import PlayList from './PlayList/PlayList.jsx';
 import AlbumList from './AlbumList/AlbumList.jsx';
 import SongList from './SongList/SongList.jsx';
 import SearchForm from './SearchForm/SearchForm.jsx';
+import SignUpForm from './SignUp/SignUpForm.jsx';
+import LogInForm from './LogIn//LogInForm.jsx';
 
 import './normalize.css';
 import style from './App.css';
@@ -23,6 +25,15 @@ class App extends Component {
       playlist      : [],
       songList      : [],
       songForDB     : [],
+      signup: {
+        username: '',
+        password: ''
+      },
+      login: {
+        loggedIn: false,
+        username: '',
+        password: ''
+      }
     };
   }
 
@@ -160,12 +171,119 @@ class App extends Component {
 //   $button.addEventListener('click', slideMenu)
 // }
 
+updateFormSignUpUsername(e) {
+    console.log(e.target.value);
+    this.setState({
+      signup: {
+        username: e.target.value,
+        password: this.state.signup.password
+      }
+    });
+  }
+
+  updateFormSignUpPassword(e) {
+    this.setState({
+      signup: {
+        username: this.state.signup.username,
+        password: e.target.value
+      }
+    });
+    console.log(e.target.value);
+  }
+
+  updateFormLogInUsername(e) {
+    this.setState({
+      login: {
+        username: e.target.value,
+        password: this.state.login.password
+      }
+    });
+  }
+
+  updateFormLogInPassword(e) {
+    this.setState({
+      login: {
+        username: this.state.login.username,
+        password: e.target.value
+      }
+    });
+  }
+
+
+  handleSignUp() {
+    // console.log('handleSignUp', this.state.signup)
+    const obj = {
+      username : this.state.signup.username,
+      password : this.state.signup.password,
+    }
+    fetch(`/api/users`, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body: JSON.stringify(obj)
+    })
+    .then(this.setState({
+      signup: {
+        username: '',
+        password: ''
+      }
+    }))
+    .then(this.alertInfo('You have signed up!'))
+    .catch(err => console.log(err));
+  }
+
+  handleLogIn() {
+    fetch('/api/auth', {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body: JSON.stringify({
+        username: this.state.login.username,
+        password: this.state.login.password
+      })
+    })
+    .then(this.setState({
+      login: {
+        username: '',
+        password: ''
+      }
+    }))
+    .then(this.onSuccessfulLogIn)
+    .catch(err => console.log(err));
+  }
+ onSuccessfulLogIn(a,b) {
+    console.log(a,b);
+  }
+
+  alertInfo(msg) {
+    alert(msg);
+  }
+
 
 
   render(){
     return (
       <div id="app-container">
         <header>
+          <div id='input'>
+         <SignUpForm
+          signUpUsername={this.state.signup.username}
+          signUpPassword={this.state.signup.password}
+          updateFormUsername={event => this.updateFormSignUpUsername(event)}
+          updateFormPassword={event => this.updateFormSignUpPassword(event)}
+          handleFormSubmit={() => this.handleSignUp()}
+        />
+        <LogInForm
+          className={this.state.login.loggedIn ? 'hidden' : ''}
+          logInUsername={this.state.login.username}
+          logInPassword={this.state.login.password}
+          updateFormUsername={event => this.updateFormLogInUsername(event)}
+          updateFormPassword={event => this.updateFormLogInPassword(event)}
+          handleFormSubmit={() => this.handleLogIn()}
+        />
+         </div>
           <h1>NSTD Playlist</h1>
           {/* SEARCH FORM COMPONENT GOES HERE (<SearchForm />)*/}
           <SearchForm
