@@ -10,7 +10,16 @@ class PlayListItem extends Component {
         <a target="_blank" href={this.props.preview}>
           <div
             className="getVideo"
-            onClick={()=>{document.querySelector('.modal').style.display = "block"}}
+            onClick={
+              ()=>{
+                console.log(this.props.name),
+                console.log(this.props.artist),
+                console.log(this.props.getMusicVideo(this.props.artist, this.props.name)),
+                // setTimeout(this.props.getMusicVideo(this.props.artist, this.props.name),0),
+                // this.props.getMusicVideo(),
+                document.querySelector('.modal').style.display = "block"
+              }
+            }
           >&#9658;
           </div>
         </a>

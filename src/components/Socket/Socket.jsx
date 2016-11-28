@@ -39,7 +39,7 @@ export default class Socket extends Component {
     return(
       <div>
         <ul id="messages"></ul>
-        <form onSubmit={event => this.handleSubmit(event)}>
+        <form className='socket-form' onSubmit={event => this.handleSubmit(event)}>
           <input id="m" onChange={event => this.handleInputChange(event)}/>
           <button>Send</button>
         </form>
