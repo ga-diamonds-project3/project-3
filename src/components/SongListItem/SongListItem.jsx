@@ -24,7 +24,7 @@ class SongListItem extends Component {
           <div
             className="getVideo"
             onClick={()=>{document.querySelector('.modal').style.display = "block"}}
-            onClick={this.props.getMusicVideo}
+            // onClick={this.props.getMusicVideo}
           > &#9658;
             {/*onClick={() => this.props.handleAbandonment(this.props.id)}*/}
             {/* <input
