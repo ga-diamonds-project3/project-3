@@ -13,9 +13,10 @@ const io         = require('socket.io')(http);
 
 io.on('connection', socket => {
   console.log('a user connected');
-  
-  socket.on('chat', msg => {
+  // receive msg from client through socket 'server-chat'
+  socket.on('server-chat', msg => {
     console.log('chat: ' + msg);
+    // broadcast msg received to all who are listening to socket 'chatroom'
     socket.broadcast.emit('chatroom', {msg : msg});
   });
 

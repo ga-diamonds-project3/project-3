@@ -7,6 +7,7 @@ export default class Socket extends Component {
   }
 
   socketFn() {
+    // receive data from server through socket 'chatroom'
     const socket = io();
     socket.on('chatroom', msg => {
       console.log('data on frontend', msg);
@@ -22,12 +23,9 @@ export default class Socket extends Component {
     e.preventDefault();
     const socket = io();
     const i = document.getElementById('m');
-    // send msg to server
-    socket.emit('chat', i.value);
+    // send data to server through socket 'server-chat'
+    socket.emit('server-chat', i.value);
     i.value = '';
-    socket.on('chat', msg => {
-      console.log('chat', msg);
-    });
   }
 
   handleInputChange(e) {
