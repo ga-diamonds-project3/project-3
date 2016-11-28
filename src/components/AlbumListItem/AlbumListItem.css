@@ -1,6 +1,7 @@
 .albumItem  {
   /*border: 1px solid black;*/
-  width: 15.7vw;
+  /*width: 15.7vw;*/
+  width: 15vw;
   height: 30vh;
   /*display: flex;*/
   font-size: 10px;
