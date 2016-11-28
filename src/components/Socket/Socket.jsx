@@ -1,49 +1,42 @@
 import React, { Component } from 'react';
 import './Socket.css';
+
+// initialize a new instance of io
+const socket = io();
 // import io from 'socket.io-client';
 // import io from 'socket.io';
 
 export default class Socket extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      msg : '',
-    }
-  }
-
   componentWillMount() {
     // console.log('being mounted');
-    // this.socketFn();
+    this.socketFn();
   }
 
   socketFn() {
     // console.log('about to setup= socket')
     const socket = io();
-    // console.log(socket)
-    socket.on('server-says-hi', socket => {
-      console.log('a user connected on frontend');
+    socket.on('server-says-hi', msg => {
+      console.log('data on frontend', msg);
     });
 
-    const i = document.getElementById('m');
+    // const i = document.getElementById('m');
     // send input values socket.emit, 2nd argument is the input value
-    socket.emit('chat', i.value);
-
+    // socket.emit('chat', i.value);
   }
 
   handleSubmit(e) {
-    console.log('submit event', e.target);
+    // console.log('submit event', e.target);
     // console.log('submit event', e.target.firstChild);
     e.preventDefault();
 
     // console.log('about to setup= socket')
-    const socket = io();
-    // console.log(socket)
-    socket.on('server-says-hi', msg => {
-      console.log('data on frontend', msg);
-    });
+    // const socket = io();
+    // socket.on('server-says-hi', msg => {
+    //   console.log('data on frontend', msg);
+    // });
     const i = document.getElementById('m');
     socket.emit('chat', i.value);
+    i.value = '';
   }
 
   handleInputChange(e) {
