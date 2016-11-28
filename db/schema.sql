@@ -4,9 +4,11 @@ DROP TABLE IF EXISTS playlist;
 DROP TABLE IF EXISTS users;
 
 -- work on it more later
-CREATE TABLE users(
-  user_id SERIAL PRIMARY KEY,
-  username TEXT NOT NULL
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  username VARCHAR NOT NULL UNIQUE,
+  password VARCHAR NOT NULL,
+  created_at TIMESTAMP DEFAULT current_timestamp
 );
 
 CREATE TABLE playlist(

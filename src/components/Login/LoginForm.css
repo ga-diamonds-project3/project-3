@@ -1,0 +1,15 @@
+#form-container {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+  }
+
+#form-container input {
+  margin: 0 5px;
+}
+
+#form-container button {
+  background-color: #eaedf2;
+  border: 1px solid #47A76E;
+  margin: 0 5px;
+}
