@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MusicVideo from '../MusicVideo/MusicVideo.jsx';
 import style from './PlayListItem.css';
 
 // create a React Component called _App_
@@ -17,7 +18,7 @@ class PlayListItem extends Component {
                 console.log(this.props.getMusicVideo(this.props.artist, this.props.name)),
                 // setTimeout(this.props.getMusicVideo(this.props.artist, this.props.name),0),
                 // this.props.getMusicVideo(),
-                document.querySelector('.modal').style.display = "block"
+                document.querySelector('.modalPL').style.display = "block"
               }
             }
           >&#9658;
@@ -34,6 +35,20 @@ class PlayListItem extends Component {
         <p className="favAlbum">{this.props.album}</p>
         <p className="favArtist">by: {this.props.artist}</p>
 
+        <div className="modalPL">
+          <span
+            className="closePL"
+            onClick={()=>{document.querySelector('.modalPL').style.display = "none"}}
+          >×
+          </span>
+          <div className="modal-contentPL">
+            <div className="music-videoPL">
+              <MusicVideo
+                videoId={this.props.videoId}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

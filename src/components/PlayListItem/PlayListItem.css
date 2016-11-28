@@ -33,3 +33,45 @@
   width: 20vw;
 }
 
+.modalPL {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba( 0, 0, 0, .8);
+}
+
+.modal-contentPL {
+  position: absolute;
+  left: 10vw;
+  top: 15vh;
+  background-color: #FAFAFA;
+  width: 80vw;
+  height: 40vw;
+  border: 1px solid #9C9C9C;
+  border-radius: 1.5vw;
+  /*box-shadow: 5px 4px 10px #888888;*/
+}
+
+.closePL {
+    color: #FAFAFA;
+    float: right;
+    margin-right: 2vw;
+    font-size: 3vw;
+    font-weight: bold;
+}
+
+.closePL:hover {
+    color: #206FF9;
+    cursor: pointer;
+}
+
+.music-videoPL{
+  /*margin: 6.5vh auto;*/
+  height: 100%;
+  width: 100%;
+}
+
+
