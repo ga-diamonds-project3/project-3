@@ -12,7 +12,6 @@ class SongListItem extends Component {
             className="getVideo"
             onClick={()=>{document.querySelector('.modal').style.display = "block"}}
           > &#9658;
-            {/*onClick={() => this.props.handleAbandonment(this.props.id)}*/}
           </div>
         {/*</a>*/}
         <div className="addSong"
@@ -26,13 +25,14 @@ class SongListItem extends Component {
 
         <div className="modal">
           <div className="modal-content">
-          <span
-            className="close"
-            onClick={()=>{document.querySelector('.modal').style.display = "none"}}
-          >×</span>
-          <h4 className="placeholder-text">YOUTUBE VIDEO GOES HERE </h4>
+            <span
+              className="close"
+              onClick={()=>{document.querySelector('.modal').style.display = "none"}}
+            >×</span>
+            <h4 className="placeholder-text">YOUTUBE VIDEO GOES HERE </h4>
           </div>
         </div>
+
       </div>
     );
   }

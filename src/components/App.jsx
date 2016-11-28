@@ -150,38 +150,7 @@ class App extends Component {
     .catch(err => console.log(err));
   }
 
-  // handleDelete(trackid) {
-  //   fetch(`/api/puppies/${id}`, {
-  //     method: 'DELETE'
-  //   })
-  //   .then(() => {
-  //     const playlist = this.state.playlist.filter((track) => {
-  //       return track.trackid !== trackid;
-  //     })
-  //     this.setState({ playlist: playlist })
-  //   })
-  //   .catch(err => console.log(err));
-  // }
 
-  // handleYoutubeFetch () {
-  //   fetch(`http://localhost:3000/api/youtube`)
-  //   .then(r => r.json())
-  //   .then((video) => {
-  //     // Data pulled from Api, will be determined at a later time.
-  //   })
-  //   .catch(error) => console.log('You\'re looking at an Error: ', error)
-  // }
-
-// slideMenu = () => {
-//   console.log('shits clicked');
-//   $menuCont = document.querySelector('#content-wrapper');
-//   $menuCont.classList.toggle('open');
-// };
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   $button = document.querySelector('#hamburger-button');
-//   $button.addEventListener('click', slideMenu)
-// }
   // remove song from playlist using trackid
   removeFromPlaylist(e) {
     // console.log('removeFromPlaylist', e.target.getAttribute('data-trackid'))
@@ -245,7 +214,6 @@ class App extends Component {
             getPlayList={this.getPlayList.bind(this)}
             playlist={this.state.playlist}
             removeFromPlaylist={this.removeFromPlaylist.bind(this)}
-            // handleDelete={this.handleDelete.bind(this)}
            />
         </aside>
 

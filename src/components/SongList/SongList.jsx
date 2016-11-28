@@ -10,8 +10,6 @@ class SongList extends Component {
   renderSongList() {
     return this.props.songList.map((song, i) =>
       <SongListItem
-        // handleLikePuppy={this.props.handleLikePuppy}
-        // handleAbandonment={this.props.handleAbandonment}
         name={song.trackName}
         album={song.collectionName}
         artist={song.artistName}
