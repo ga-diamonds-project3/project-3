@@ -265,8 +265,8 @@ class App extends Component {
            />
         </aside>
 
-        <footer>
-          <Socket socket={this.socketFn.bind(this)}/>
+        <footer >
+          <Socket />
         </footer>
       </div>
     );

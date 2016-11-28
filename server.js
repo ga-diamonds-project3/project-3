@@ -13,6 +13,12 @@ const io         = require('socket.io')(http);
 
 io.on('connection', socket => {
   console.log('a user connected');
+
+  io.emit('server-says-hi', {msg: 'hi!'});
+
+  io.on('msg', data => console.log('server side', data.msg));
+
+  // io.on('disconnect', msg => console.log('a user has disconnected'));
 });
 
 http.listen(PORT, () => console.log('listening on', PORT));
