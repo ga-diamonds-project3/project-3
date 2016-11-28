@@ -18,8 +18,9 @@ class SongList extends Component {
           artist={song.artistName}
           preview={song.previewUrl}
           changeSongSelected={()=>this.props.changeSongSelected(i)}
-          getMusicVideo={()=>this.props.getMusicVideo(song.artistName, song.trackName)}
-          musicVideo={this.props.musicVideo}
+          // getMusicVideo={()=>this.props.getMusicVideo(song.artistName, song.trackName)}
+          getMusicVideo={this.props.getMusicVideo}
+          videoId={this.props.videoId}
           key={i}
         />
     );

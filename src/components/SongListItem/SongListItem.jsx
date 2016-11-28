@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MusicVideo from '../MusicVideo/MusicVideo.jsx';
+// import YouTube from 'react-youtube'
 import style from './SongListItem.css';
 
 // const handleSubmit = (event) => {
@@ -13,6 +14,29 @@ import style from './SongListItem.css';
 //   };
 
 class SongListItem extends Component {
+  // constructor() {
+  //   super();
+
+  //   this.state = {
+  //     videoId : '',
+  //   }
+  // }
+
+  // getMusicVideo(a, b) {
+  //   // assuming that album is updated to state by click handler
+  //   fetch(`/api/youtube/${a}-${b}`)
+  //   .then(r => r.json())
+  //   .then(data => {
+  //     console.log('getMusicVideo retuns', data.items[0].id.videoId)
+  //     // this.fetchYoutube(data.items[0].id.videoId);
+  //     this.setState({
+  //       videoId : data.items[0].id.videoId,
+  //     })
+  //   })
+  //   .catch(err => console.log('musicvideo error', err));
+  // }
+
+
   render(){
     return (
       <div className="songItem">
@@ -23,8 +47,16 @@ class SongListItem extends Component {
         {/*<form onClick={this.props.getMusicVideo}>*/}
           <div
             className="getVideo"
-            onClick={()=>{document.querySelector('.modal').style.display = "block"}}
-            // onClick={this.props.getMusicVideo}
+            onClick={
+              ()=>{
+                console.log(this.props.name),
+                console.log(this.props.artist),
+                console.log(this.props.getMusicVideo(this.props.artist, this.props.name)),
+                // setTimeout(this.props.getMusicVideo(this.props.artist, this.props.name),0),
+                // this.props.getMusicVideo(),
+                document.querySelector('.modal').style.display = "block"
+              }
+            }
           > &#9658;
             {/*onClick={() => this.props.handleAbandonment(this.props.id)}*/}
             {/* <input
@@ -59,9 +91,11 @@ class SongListItem extends Component {
             {/*<button
             onClick={this.props.getMusicVideo.bind(this)}
               >Play Music</button>*/}
-              <div>
-                <MusicVideo
-                  musicVideo={this.props.musicVideo}
+              <div
+                className="video"
+                >
+               <MusicVideo
+                  videoId={this.props.videoId}
                 />
               </div>
           </div>

@@ -19,11 +19,12 @@ class App extends Component {
       searchArtist  : '',
       albumSelected : '',
       songSelected  : '',
+      videoId       : '',
       albumList     : [],
       playlist      : [],
       songList      : [],
-      musicVideo    : [],
       songForDB     : [],
+
     };
   }
   // // check for playlist update before rendering
@@ -77,7 +78,7 @@ class App extends Component {
 
   // get a list of songs by album id
   getSongs() {
-    // console.log('HIT')
+    console.log('HIT', this.state.albumSelected)
     // assuming that album is updated to state by click handler
     fetch(`/itunes/songs/${this.state.albumSelected}`)
     .then(r => r.json())
@@ -92,14 +93,13 @@ class App extends Component {
 
   getMusicVideo(a, b) {
     // assuming that album is updated to state by click handler
-    fetch(`/api/youtube/${a}-${b}`)
+    fetch(`/api/youtube/${a}%20${b}`)
     .then(r => r.json())
     .then(data => {
       this.setState({
-        musicVideo: data.items[0],
-        musicCounter: [1],
+        videoId: data.items[0].id.videoId,
       });
-      console.log(this.state.musicVideo)
+      console.log('app jsx line 102', this.state.videoId);
     })
     .catch(err => console.log('musicvideo error', err));
   }
@@ -239,8 +239,10 @@ class App extends Component {
             <SongList
               songList={this.state.songList}
               musicVideo={this.state.musicVideo}
+              // getMusicVideo={event=>this.getMusicVideo(event)}
               getMusicVideo={this.getMusicVideo.bind(this)}
               changeSongSelected={this.changeSongSelcted.bind(this)}
+              videoId={this.state.videoId}
             />
           </section>
 
@@ -255,6 +257,8 @@ class App extends Component {
             playlist={this.state.playlist}
             removeFromPlaylist={this.removeFromPlaylist.bind(this)}
             // handleDelete={this.handleDelete.bind(this)}
+            getMusicVideo={this.getMusicVideo.bind(this)}
+            videoId={this.state.videoId}
            />
         </aside>
 

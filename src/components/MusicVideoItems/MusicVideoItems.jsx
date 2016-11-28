@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import YouTube from 'react-youtube'
 import './MusicVideoItems.css'
 
@@ -7,11 +7,16 @@ const opts = {
   width: '580',
 }
 
-const MusicVideoItems = props => (
-    <YouTube
-      videoId={props.videoId}
-      opts={opts}
-    />
-  );
+class MusicVideoItems extends Component {
+    render() {
+        return(
+          console.log('music video item loaded'),
+          <YouTube
+            videoId={props.videoId}
+            opts={opts}
+          />
+        )
+    }
+}
 
 export default MusicVideoItems;
