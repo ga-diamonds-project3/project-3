@@ -20,10 +20,12 @@ class App extends Component {
       searchArtist  : '',
       albumSelected : '',
       songSelected  : '',
+      videoId       : '',
       albumList     : [],
       playlist      : [],
       songList      : [],
       songForDB     : [],
+
     };
   }
 
@@ -64,6 +66,7 @@ class App extends Component {
     setTimeout(()=>{console.log('selected album id is', this.state.albumSelected)}, 0);
     setTimeout(()=>{this.getSongs()}, 0);
   }
+
   // get a list of songs by album id
   getSongs() {
     // console.log('HIT')
@@ -77,6 +80,20 @@ class App extends Component {
     })
     .catch(err => console.log('getsongs error', err));
   }
+
+  getMusicVideo(a, b) {
+    // assuming that album is updated to state by click handler
+    fetch(`/api/youtube/${a}%20${b}`)
+    .then(r => r.json())
+    .then(data => {
+      this.setState({
+        videoId: data.items[0].id.videoId,
+      });
+      console.log('app jsx line 102', this.state.videoId);
+    })
+    .catch(err => console.log('musicvideo error', err));
+  }
+
   // change songSelected stat to track id of song clicked
   // runs getSong function
   changeSongSelcted(num) {
@@ -186,7 +203,10 @@ class App extends Component {
             {/* SONG LIST COMPONENT GOES HERE (<SongList />)*/}
             <SongList
               songList={this.state.songList}
+              musicVideo={this.state.musicVideo}
+              getMusicVideo={this.getMusicVideo.bind(this)}
               changeSongSelected={this.changeSongSelcted.bind(this)}
+              videoId={this.state.videoId}
             />
           </section>
 
@@ -201,6 +221,8 @@ class App extends Component {
             getPlayList={this.getPlayList.bind(this)}
             playlist={this.state.playlist}
             removeFromPlaylist={this.removeFromPlaylist.bind(this)}
+            getMusicVideo={this.getMusicVideo.bind(this)}
+            videoId={this.state.videoId}
            />
         </aside>
 

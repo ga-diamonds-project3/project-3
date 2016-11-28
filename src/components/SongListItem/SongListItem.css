@@ -59,7 +59,7 @@
   z-index: 999;
   width: 100vw;
   height: 100vh;
-  background-color: rgba( 0, 0, 0, .6);
+  background-color: rgba( 0, 0, 0, .8);
 }
 
 .modal-content {
@@ -75,7 +75,7 @@
 }
 
 .close {
-    color: #000000;
+    color: #FAFAFA;
     float: right;
     margin-right: 2vw;
     font-size: 3vw;
@@ -92,4 +92,9 @@
   font-size: 3vw;
 }
 
+.music-video{
+  /*margin: 6.5vh auto;*/
+  height: 100%;
+  width: 100%;
+}
 

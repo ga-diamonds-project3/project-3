@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import MusicVideo from '../MusicVideo/MusicVideo.jsx';
 import style from './SongListItem.css';
 
-// create a React Component called _App_
 class SongListItem extends Component {
 
   render(){
@@ -10,7 +10,16 @@ class SongListItem extends Component {
         {/*<a target="_blank" href={this.props.preview}>*/}
           <div
             className="getVideo"
-            onClick={()=>{document.querySelector('.modal').style.display = "block"}}
+            onClick={
+              ()=>{
+                console.log(this.props),
+                console.log(this.props.artist),
+                console.log(this.props.getMusicVideo(this.props.artist, this.props.name)),
+                // setTimeout(this.props.getMusicVideo(this.props.artist, this.props.name),0),
+                // this.props.getMusicVideo(),
+                document.querySelector('.modal').style.display = "block"
+              }
+            }
           > &#9658;
           </div>
         {/*</a>*/}
@@ -24,12 +33,17 @@ class SongListItem extends Component {
         {/*<p className="songArtist">Artist: {this.props.artist}</p>*/}
 
         <div className="modal">
+          <span
+            className="close"
+            onClick={()=>{document.querySelector('.modal').style.display = "none"}}
+          >×
+          </span>
           <div className="modal-content">
-            <span
-              className="close"
-              onClick={()=>{document.querySelector('.modal').style.display = "none"}}
-            >×</span>
-            <h4 className="placeholder-text">YOUTUBE VIDEO GOES HERE </h4>
+            <div className="music-video">
+              <MusicVideo
+                videoId={this.props.videoId}
+              />
+            </div>
           </div>
         </div>
 

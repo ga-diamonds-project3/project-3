@@ -26,6 +26,7 @@
 .socket-form {
   position: absolute;
   bottom: 0;
+
   background: #000;
   padding: 3px;
   width: 330px;
