@@ -17,6 +17,10 @@ export default class Socket extends Component {
     const socket = io();
     socket.on('server-says-hi', msg => {
       console.log('data on frontend', msg);
+      const ul = document.getElementById('messages');
+      const li = document.createElement('li');
+      li.innerHTML = msg.msg;
+      ul.appendChild(li);
     });
 
     // const i = document.getElementById('m');
@@ -29,14 +33,19 @@ export default class Socket extends Component {
     // console.log('submit event', e.target.firstChild);
     e.preventDefault();
 
-    // console.log('about to setup= socket')
-    // const socket = io();
-    // socket.on('server-says-hi', msg => {
-    //   console.log('data on frontend', msg);
-    // });
     const i = document.getElementById('m');
+    // li.innerHTML = i.value;
+    // ul.appendChild(li);
     socket.emit('chat', i.value);
     i.value = '';
+    // console.log('about to setup= socket')
+    socket.on('chat', msg => {
+      console.log('chat', msg);
+      // const ul = document.getElementById('messages');
+      // const li = document.createElement('li');
+      // li.innerHTML = msg;
+      // ul.appendChild(li);
+    });
   }
 
   handleInputChange(e) {
