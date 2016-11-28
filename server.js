@@ -14,11 +14,16 @@ const io         = require('socket.io')(http);
 io.on('connection', socket => {
   console.log('a user connected');
 
-  io.emit('server-says-hi', {msg: 'hi!'});
+  // io.emit('server-says-hi', {msg: 'hi!'});
+  // socket.broadcast.emit('server-says-hi', {msg: 'working'})
+  // io.on('msg', data => console.log('server side', data.msg));
+  
+  socket.on('chat', msg => {
+    console.log('chat: ' + msg);
+    socket.broadcast.emit('server-says-hi', {msg : msg});
+  });
 
-  io.on('msg', data => console.log('server side', data.msg));
-
-  // io.on('disconnect', msg => console.log('a user has disconnected'));
+  socket.on('disconnect', () => console.log('user disconnected'));
 });
 
 http.listen(PORT, () => console.log('listening on', PORT));

@@ -14,29 +14,41 @@ export default class Socket extends Component {
 
   componentWillMount() {
     // console.log('being mounted');
-    this.socketFn();
+    // this.socketFn();
   }
 
   socketFn() {
     // console.log('about to setup= socket')
-    const socket = io('http://localhost:3000');
+    const socket = io();
     // console.log(socket)
     socket.on('server-says-hi', socket => {
       console.log('a user connected on frontend');
-      // socket.emit('msg', {msg: 'tacos at 12!'});
     });
+
+    const i = document.getElementById('m');
+    // send input values socket.emit, 2nd argument is the input value
+    socket.emit('chat', i.value);
 
   }
 
   handleSubmit(e) {
     console.log('submit event', e.target);
-    console.log('submit event', e.target.firstChild);
+    // console.log('submit event', e.target.firstChild);
     e.preventDefault();
+
+    // console.log('about to setup= socket')
+    const socket = io();
+    // console.log(socket)
+    socket.on('server-says-hi', msg => {
+      console.log('data on frontend', msg);
+    });
+    const i = document.getElementById('m');
+    socket.emit('chat', i.value);
   }
 
   handleInputChange(e) {
     // console.log('input value:', e);
-    console.log(e.target.value)
+    // console.log(e.target.value)
     this.setState({
       msg: e.target.value,
     });
