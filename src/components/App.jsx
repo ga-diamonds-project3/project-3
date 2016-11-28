@@ -36,7 +36,10 @@ class App extends Component {
       }
     };
   }
-
+  // // check for playlist update before rendering
+  componentWillMount() {
+    this.getPlayList();
+  }
   // udpate searchArtist state on every change at input search
   handleInputChange(e) {
     // console.log('input value:', e);
@@ -119,19 +122,39 @@ class App extends Component {
       this.setState({
         songForDB: filterSongs,
       });
-      console.log('song selected', this.state.songForDB)
+      console.log('song selected', this.state.songForDB[0]);
+      const songInfo = {
+        trackid        : this.state.songForDB[0].trackId,
+        trackname      : this.state.songForDB[0].trackName,
+        artistid       : this.state.songForDB[0].artistId,
+        artistname     : this.state.songForDB[0].artistName,
+        collectionid   : this.state.songForDB[0].collectionId,
+        collectionname : this.state.songForDB[0].collectionName,
+        youtube        : this.state.songForDB[0].previewUrl,
+        user_id        : 1,
+      };
+      this.addToPlaylist(songInfo);
     })
     .catch(err => console.log('getSong error', err));
   }
-
-
+  // save a specified song to the user's playlist
+  // payload    song info to add
+  addToPlaylist(payload) {
+    console.log('in addToPlaylist', payload)
+    fetch(`/playlist`, {
+      headers : { 'Content-Type' : 'application/json' },
+      method  : 'POST',
+      body    : JSON.stringify(payload),
+    })
+    .then(this.getPlayList())
+    .catch(err => console.log('addToPlaylist error', err));
+  }
   // function that will hit our database API and set an array of data to the playlist state
   getPlayList() {
     fetch('/playlist/1')
     .then(r => r.json())
     .then((songs) => {
       this.setState({
-
         playlist: songs
       });
     })
@@ -263,6 +286,17 @@ updateFormSignUpUsername(e) {
 
 
 
+  // remove song from playlist using trackid
+  removeFromPlaylist(e) {
+    // console.log('removeFromPlaylist', e.target.getAttribute('data-trackid'))
+    const trackid = e.target.getAttribute('data-trackid');
+    console.log(trackid)
+    fetch(`/playlist/${trackid}`, { method : 'DELETE' })
+    .then(this.getPlayList())
+    .catch(err => console.log('removeFromPlaylist error', err));
+  }
+
+
   render(){
     return (
       <div id="app-container">
@@ -293,7 +327,6 @@ updateFormSignUpUsername(e) {
           <div
             id="hamburger-button"
             onClick={() => {
-                      console.log('shits clicked');
                       document.querySelector('#content-wrapper').classList.toggle('open');
                     }}
           >
@@ -333,6 +366,7 @@ updateFormSignUpUsername(e) {
           <PlayList
             getPlayList={this.getPlayList.bind(this)}
             playlist={this.state.playlist}
+            removeFromPlaylist={this.removeFromPlaylist.bind(this)}
             // handleDelete={this.handleDelete.bind(this)}
            />
         </aside>
