@@ -4,6 +4,7 @@ import PlayList from './PlayList/PlayList.jsx';
 import AlbumList from './AlbumList/AlbumList.jsx';
 import SongList from './SongList/SongList.jsx';
 import SearchForm from './SearchForm/SearchForm.jsx';
+import Socket from './Socket/Socket.jsx';
 
 import './normalize.css';
 import style from './App.css';
@@ -41,8 +42,8 @@ class App extends Component {
 
   // // check for playlist update before rendering
   componentWillMount() {
-    this.getPlayList();
-    this.socketFn();
+    // this.getPlayList();
+    // this.socketFn();
   }
   // udpate searchArtist state on every change at input search
   handleInputChange(e) {
@@ -265,7 +266,7 @@ class App extends Component {
         </aside>
 
         <footer>
-
+          <Socket socket={this.socketFn.bind(this)}/>
         </footer>
       </div>
     );
