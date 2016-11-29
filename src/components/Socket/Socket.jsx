@@ -41,9 +41,7 @@ export default class Socket extends Component {
         <div
         className="message-header"
         onClick={()=>{document.querySelector('.message-popup').style.display = "none"}}
-        >
-          <p>playlist chat</p>
-          <span className="close">×</span>
+        ><span>×</span>
         </div>
         <div className="screen">
           <ul id="messages"></ul>

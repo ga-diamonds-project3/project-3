@@ -11,7 +11,7 @@
   right: 1vw;
   bottom: 0;
   z-index: 50;
-  /*display: none;*/
+  display: none;
   /*float: right;*/
   border: 1px solid black;
   position: fixed;
@@ -21,10 +21,18 @@
 }
 
 .message-header {
+  text-align: right;
+  padding-right: 1.2vw;
   background-color: #000;
   color: #206FF9;
+  font-size: 1vw;
+  font-weight: bold;
   height: 3vh;
   width: 25vw;
+}
+
+.message-header:hover {
+  cursor: pointer;
 }
 
 .socket-form {
@@ -46,13 +54,13 @@
 
 .socket-form button {
   width: 4.8vw;
-  background: rgb(130, 224, 255);
+  background-color: #206FF9;
   border: none;
   padding: 10px;
 }
 
 .screen {
-  background-color: green;
+  background-color: #FFFFFF;
   width: 25vw;
   height: 40vh;
 }

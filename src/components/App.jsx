@@ -237,6 +237,7 @@ class App extends Component {
                       document.querySelector('.message-popup').style.display='block';
                     }}
           >
+          Open Chat
           </div>
         </footer>
       </div>

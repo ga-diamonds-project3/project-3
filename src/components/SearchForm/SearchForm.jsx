@@ -16,7 +16,7 @@ export default class SearchForm extends Component {
           placeholder="Artist"
           onChange={event => this.props.handleInputChange(event)}
         />
-        <button >Search</button>
+        <button className='search-button'>Search</button>
       </form>
       </div>
     )
