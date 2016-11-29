@@ -1,7 +1,7 @@
 {
-  "name": "bobby-king-react-template",
+  "name": "NSTD Playlist",
   "version": "1.0.0",
-  "description": "React application template using webpack",
+  "description": "Full stack web application",
   "main": "server.js",
   "private": true,
   "scripts": {
@@ -16,7 +16,10 @@
     "type": "",
     "url": ""
   },
-  "author": "Bobby King",
+  "engines": {
+    "node": "6.6.0"
+  },
+  "author": "NSTD",
   "license": "SEE LICENSE IN LICENSE",
   "bugs": {
     "url": "https://github.com/gittheking/react_template/issues"
