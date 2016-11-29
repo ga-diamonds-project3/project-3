@@ -234,7 +234,7 @@ class App extends Component {
         <div
             id="open-chat"
             onClick={() => {
-                      document.querySelector('.message-box').style.display='block';
+                      document.querySelector('.message-popup').style.display='block';
                     }}
           >
           </div>

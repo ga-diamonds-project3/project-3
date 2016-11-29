@@ -37,12 +37,23 @@ export default class Socket extends Component {
 
   render() {
     return(
-      <div className='message-box'>
-        <ul id="messages"></ul>
-        <form className='socket-form' onSubmit={event => this.handleSubmit(event)}>
-          <input id="m" onChange={event => this.handleInputChange(event)}/>
-          <button>Send</button>
-        </form>
+      <div className='message-popup'>
+        <div
+        className="message-header"
+        onClick={()=>{document.querySelector('.message-popup').style.display = "none"}}
+        >
+          <p>playlist chat</p>
+          <span className="close">×</span>
+        </div>
+        <div className="screen">
+          <ul id="messages"></ul>
+        </div>
+        <div className='socket-form'>
+          <form onSubmit={event => this.handleSubmit(event)}>
+            <input id="m" onChange={event => this.handleInputChange(event)}/>
+            <button>Send</button>
+          </form>
+        </div>
       </div>
     )
   }

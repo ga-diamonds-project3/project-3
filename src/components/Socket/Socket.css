@@ -4,55 +4,63 @@
   box-sizing: border-box;
 }
 
-.message-box {
+.message-popup {
+  font: 13px Helvetica, Arial;
   background-color: #FFFFFF;
   position: absolute;
-  right: 0;
+  right: 1vw;
   bottom: 0;
   z-index: 50;
-  display: none;
-  float: right;
+  /*display: none;*/
+  /*float: right;*/
   border: 1px solid black;
   position: fixed;
   bottom: 5vh;
-  width: 330px;
-  height: 330px;
+  width: 25vw;
+  height: 48vh;
 }
 
-/*body {
-  font: 13px Helvetica, Arial;
-}*/
+.message-header {
+  background-color: #000;
+  color: #206FF9;
+  height: 3vh;
+  width: 25vw;
+}
 
 .socket-form {
   position: absolute;
   bottom: 0;
-
   background: #000;
   padding: 3px;
-  width: 330px;
+  width: 25vw;
 }
 
 .socket-form input {
   border: 0;
   padding: 10px;
-  width: 260px;
+  width: 19.5vw;
+  height: 5vh;
   margin-right: .5%;
-  position:
 }
 
+
 .socket-form button {
-  width: 60px;
+  width: 4.8vw;
   background: rgb(130, 224, 255);
   border: none;
   padding: 10px;
 }
 
+.screen {
+  background-color: green;
+  width: 25vw;
+  height: 40vh;
+}
+
 
 #messages {
-  /*position: fixed;*/
-  /*bottom: 13vh;*/
-  width: 330px;
-  max-height: 330px;
+  width: 25vw;
+  height: 39vh;
   overflow: auto;
   list-style-type: none;
   margin: 0;
