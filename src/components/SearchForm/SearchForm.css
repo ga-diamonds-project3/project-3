@@ -1,0 +1,13 @@
+.search-button {
+  /*margin-top: .3vh;*/
+  cursor: pointer;
+  font-size: 1vw;
+  /*position: absolute;*/
+  /*right: 1vw;*/
+  padding: .5vh 1vw;
+  color: #206FF9;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  width: 5vw;
+  height: 3.3vh;
+}

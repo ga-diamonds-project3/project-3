@@ -211,6 +211,7 @@ class App extends Component {
           </section>
 
         </main>
+
         <aside className="pop-out">
         {/* PLAYLIST COMPONENT GOES HERE (<PlayList />)*/}
           <div className="playlist">
@@ -220,14 +221,24 @@ class App extends Component {
             getPlayList={this.getPlayList.bind(this)}
             playlist={this.state.playlist}
             removeFromPlaylist={this.removeFromPlaylist.bind(this)}
-            // handleDelete={this.handleDelete.bind(this)}
             getMusicVideo={this.getMusicVideo.bind(this)}
             videoId={this.state.videoId}
            />
         </aside>
 
-        <footer >
+        <div className="socket-container">
           <Socket />
+        </div>
+
+        <footer>
+        <div
+            id="open-chat"
+            onClick={() => {
+                      document.querySelector('.message-popup').style.display='block';
+                    }}
+          >
+          Open Chat
+          </div>
         </footer>
       </div>
     );
