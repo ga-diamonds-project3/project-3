@@ -1,4 +1,3 @@
-// const db = require('../db/db');
 const pg       = require('pg-promise')({});
 
 const pgConfig = {  host:     process.env.PG_HOST,
