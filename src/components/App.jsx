@@ -229,6 +229,16 @@ class App extends Component {
         <div className="socket-container">
           <Socket />
         </div>
+        
+        <div className="tutorialModal">
+          <h1>How To Use</h1>
+          <p>You can start using by searching for your favorite artist.</p>
+          <p>The hamburger icon displays your playlist.</p>
+          <p>Choose any album after searching artist. You can play music video when you click play.</p>
+          <p>You can open chat and start chatting with other people when they're online.</p>
+          <p>Press finished to start using it.</p>
+          <div className="closeModal" onClick={() => { document.querySelector('.tutorialModal').classList.toggle('finished'); }}>FINISHED</div>
+        </div>
 
         <footer>
         <div
