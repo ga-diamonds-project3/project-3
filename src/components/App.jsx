@@ -237,6 +237,7 @@ class App extends Component {
           <p>Choose any album after searching artist. You can play music video when you click play.</p>
           <p>You can open chat and start chatting with other people when they're online.</p>
           <p>Press finished to start using it.</p>
+          <p>You can refresh to read the tutorial again.</p>
           <div className="closeModal" onClick={() => { document.querySelector('.tutorialModal').classList.toggle('finished'); }}>FINISHED</div>
         </div>
 
