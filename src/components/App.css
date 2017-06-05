@@ -128,7 +128,7 @@ footer {
   right: 0;
   top: 0;
   bottom: 0;
-  padding: 2em;
+  padding: 1em 3em;
   border: 1px solid black;
   box-shadow: 0px 0px 1px 5000px rgba(100,100,100,0.9); 
 }
@@ -139,5 +139,10 @@ footer {
   left: 40%;
   margin-top: 2em;
   cursor: pointer;
+  -webkit-transition: .3s ease-in;
+      -ms-transition: .3s ease-in;
+       -o-transition: .3s ease-in;
+          transition: .3s ease-in;
 }
+.tutorialModal .closeModal:hover { font-size: 1.2em; }
 .tutorialModal.finished { display: none; }
