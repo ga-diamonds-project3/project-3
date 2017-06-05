@@ -114,3 +114,30 @@ footer {
   width: 7vw;
   height: 4vh;
 }
+
+/* =======================
+  TUTORIAL MODAL
+======================= */
+.tutorialModal {
+  display: block;
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 2em;
+  border: 1px solid black;
+  box-shadow: 0px 0px 1px 5000px rgba(100,100,100,0.9); 
+}
+.tutorialModal h1, .tutorialModal p { margin: .5em 0; }
+.tutorialModal .closeModal {
+  display: inline-block;
+  position: relative;
+  left: 40%;
+  margin-top: 2em;
+  cursor: pointer;
+}
+.tutorialModal.finished { display: none; }

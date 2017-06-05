@@ -4,10 +4,13 @@
   "description": "React application template using webpack",
   "main": "server.js",
   "private": true,
+  "engines": {
+    "node": "6.6.0"
+  },
   "scripts": {
     "clean": "rm -rf dist && rm -rf node_modules",
-    "heroku-prebuild": "scripts/deployment_react.sh",
-    "heroku-postbuild": "scripts/deployment_cleanup.sh",
+    "heroku-prebuild": "bash ./scripts/deployment_react.sh",
+    "heroku-postbuild": "bash ./scripts/deployment_cleanup.sh",
     "start": "node server.js",
     "rebuild": "webpack -d --progress --colors",
     "watch": "webpack -d --progress --watch"
@@ -29,8 +32,6 @@
     "morgan": "^1.7.0",
     "node-fetch": "^1.6.3",
     "pg-promise": "^5.2.7",
-    "react-youtube": "^7.2.0",
-    "react-addons-css-transition-group": "^15.4.1",
     "socket.io": "^1.7.1",
     "socket.io-client": "^1.6.0"
   },
@@ -50,8 +51,10 @@
     "html-webpack-template": "^5.0.0",
     "imports-loader": "^0.6.5",
     "postcss-loader": "^1.1.1",
+    "react-addons-css-transition-group": "^15.4.1",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
+    "react-youtube": "^7.2.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1"
